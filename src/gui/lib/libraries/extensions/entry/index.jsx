@@ -20,10 +20,10 @@ const translationMap = {
 };
 
 const entry = {
-    name: 'Microbit More',
+    name: 'Boson',
     extensionId: 'microbitMore',
-    extensionURL: 'https://microbit-more.github.io/dist/microbitMore.mjs',
-    collaborator: 'Yengawa Lab',
+    extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
+    collaborator: 'Scuola di Robotica',
     iconURL: microbitMoreIconURL,
     insetIconURL: microbitMoreInsetIconURL,
     get description () {
@@ -48,7 +48,7 @@ const entry = {
             id: 'gui.extension.microbit.connectingMessage'
         });
     },
-    helpLink: 'https://microbit-more.github.io/',
+    helpLink: 'https://eu-rate-boson.github.io/',
     setFormatMessage: formatter => {
         formatMessage = formatter;
     },
