@@ -1,10 +1,13 @@
-const ArgumentType = require('../../extension-support/argument-type');
-const BlockType = require('../../extension-support/block-type');
-const log = require('../../util/log');
-const cast = require('../../util/cast');
-const BLE = require('./ble');
+import ArgumentType from '../../extension-support/argument-type';
+import BlockType from '../../extension-support/block-type';
+import Cast from '../../util/cast';
+import log from '../../util/log';
 
-const WebSerial = require('./serial-web');
+import blockIcon from './block-icon.svg';
+import translations from './translations.json';
+
+import BLE from './ble';
+import WebSerial from './serial-web';
 
 const uint8ArrayToBase64 = array => window.btoa(String.fromCharCode(...array));
 const base64ToUint8Array = base64 => {
@@ -15,6 +18,19 @@ const base64ToUint8Array = base64 => {
 
 let formatMessage = messageData => messageData.defaultMessage;
 
+/**
+ * Setup format-message for this extension.
+ */
+const setupTranslations = () => {
+    const localeSetup = formatMessage.setup();
+    if (localeSetup && localeSetup.translations[localeSetup.locale]) {
+        Object.assign(
+            localeSetup.translations[localeSetup.locale],
+            translations[localeSetup.locale]
+        );
+    }
+};
+
 const EXTENSION_ID = 'microbitMore';
 
 /**
@@ -23,13 +39,6 @@ const EXTENSION_ID = 'microbitMore';
  * @type {string}
  */
 let extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
-
-/**
- * Icon png to be displayed at the left edge of each extension block, encoded as a data URI.
- * @type {string}
- */
-// eslint-disable-next-line max-len
-const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAErmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjQwIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iNDAiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSI0MCIKICAgdGlmZjpJbWFnZUxlbmd0aD0iNDAiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249IjcyLjAiCiAgIHRpZmY6WVJlc29sdXRpb249IjcyLjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjEtMDMt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';
 
 /**
  * Enum for version of the hardware.
@@ -1636,10 +1645,23 @@ class MbitMore {
 class MbitMoreBlocks {
 
     /**
+     * A translation object which is used in this class.
+     * @param {FormatObject} formatter - translation object
+     */
+    static set formatMessage (formatter) {
+        formatMessage = formatter;
+        if (formatMessage) setupTranslations();
+    }
+
+    /**
      * @return {string} - the name of this extension.
      */
     static get EXTENSION_NAME () {
-        return 'Microbit More';
+        return formatMessage({
+            id: 'mbitMore.name',
+            default: 'MicroBit More',
+            description: 'name of the extension'
+        });
     }
 
     /**
@@ -2223,12 +2245,12 @@ class MbitMoreBlocks {
      * @returns {object} metadata for this extension and its blocks.
      */
     getInfo () {
-        this.setupTranslations();
+        setupTranslations();
         return {
             id: MbitMoreBlocks.EXTENSION_ID,
             name: MbitMoreBlocks.EXTENSION_NAME,
             extensionURL: MbitMoreBlocks.extensionURL,
-            blockIconURI: blockIconURI,
+            blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
                 {
@@ -2797,8 +2819,7 @@ class MbitMoreBlocks {
                     items: this.CONNECTION_STATE_MENU
                 }
             },
-            // eslint-disable-next-line no-use-before-define
-            translationMap: extensionTranslations
+            translationMap: translations
         };
     }
 
@@ -2931,7 +2952,7 @@ class MbitMoreBlocks {
      * @return {?Promise} - a Promise that resolves after a tick or undefinde if yield.
      */
     displayMatrix (args, util) {
-        const matrixString = cast.toString(args.MATRIX)
+        const matrixString = Cast.toString(args.MATRIX)
             .replace(/！-～/g, ws => String.fromCharCode(ws.charCodeAt(0) - 0xFEE0)); // zenkaku to hankaku
         let matrixData;
         if (matrixString.includes(',')) {
@@ -3395,221 +3416,9 @@ class MbitMoreBlocks {
         const state = (args.STATE === 'connected');
         return (state === this._peripheral.isConnected());
     }
-
-    /**
-     * Setup format-message for this extension.
-     */
-    setupTranslations () {
-        const localeSetup = formatMessage.setup();
-        if (localeSetup && localeSetup.translations[localeSetup.locale]) {
-            Object.assign(
-                localeSetup.translations[localeSetup.locale],
-                // eslint-disable-next-line no-use-before-define
-                extensionTranslations[localeSetup.locale]
-            );
-        }
-    }
 }
 
-const extensionTranslations = {
-    'ja': {
-        'mbitMore.whenButtonEvent': 'ボタン [NAME] が [EVENT] とき',
-        'mbitMore.buttonIDMenu.a': 'A',
-        'mbitMore.buttonIDMenu.b': 'B',
-        'mbitMore.buttonEventMenu.down': '押された',
-        'mbitMore.buttonEventMenu.hold': '長押しされた',
-        'mbitMore.buttonEventMenu.up': '離された',
-        'mbitMore.buttonEventMenu.click': 'クリックされた',
-        'mbitMore.buttonEventMenu.longClick': 'ロングクリックされた',
-        'mbitMore.buttonEventMenu.doubleClick': 'ダブルクリックされた',
-        'mbitMore.isButtonPressed': 'ボタン [NAME] が押されている',
-        'mbitMore.whenTouchEvent': 'ピン [NAME] が [EVENT] とき',
-        'mbitMore.isPinTouched': 'ピン [NAME] がタッチされている',
-        'mbitMore.touchIDMenu.logo': 'ロゴ',
-        'mbitMore.touchEventMenu.touched': 'タッチされた',
-        'mbitMore.touchEventMenu.hold': '長押しされた',
-        'mbitMore.touchEventMenu.released': '離された',
-        'mbitMore.touchEventMenu.tapped': 'タップされた',
-        'mbitMore.touchEventMenu.longTapped': 'ロングタップされた',
-        'mbitMore.touchEventMenu.doubleTapped': 'ダブルタップされた',
-        'mbitMore.whenGesture': '[GESTURE] とき',
-        'mbitMore.gesturesMenu.tiltUp': '上へ傾いた',
-        'mbitMore.gesturesMenu.tiltDown': '下へ傾いた',
-        'mbitMore.gesturesMenu.tiltLeft': '左へ傾いた',
-        'mbitMore.gesturesMenu.tiltRight': '右へ傾いた',
-        'mbitMore.gesturesMenu.faceUp': '表になった',
-        'mbitMore.gesturesMenu.faceDown': '裏になった',
-        'mbitMore.gesturesMenu.freefall': '落ちた',
-        'mbitMore.gesturesMenu.g3': '3Gかかった',
-        'mbitMore.gesturesMenu.g6': '6Gかかった',
-        'mbitMore.gesturesMenu.g8': '8Gかかった',
-        'mbitMore.gesturesMenu.shake': 'ゆさぶられた',
-        'mbitMore.displayMatrix': 'パターン [MATRIX] を表示する',
-        'mbitMore.displayText': '文字 [TEXT] を [DELAY] ミリ秒間隔で流す',
-        'mbitMore.clearDisplay': '画面を消す',
-        'mbitMore.isPinHigh': 'ピン [PIN] がハイである',
-        'mbitMore.lightLevel': '明るさ',
-        'mbitMore.temperature': '温度',
-        'mbitMore.compassHeading': '北からの角度',
-        'mbitMore.magneticForce': '磁力 [AXIS]',
-        'mbitMore.acceleration': '加速度 [AXIS]',
-        'mbitMore.pitch': 'ピッチ',
-        'mbitMore.roll': 'ロール',
-        'mbitMore.soundLevel': '音の大きさ',
-        'mbitMore.analogValue': 'ピン [PIN] のアナログレベル',
-        'mbitMore.setPullMode': 'ピン [PIN] を [MODE] 入力にする',
-        'mbitMore.setDigitalOut': 'ピン [PIN] をデジタル出力 [LEVEL] にする',
-        'mbitMore.setAnalogOut': 'ピン [PIN] をアナログ出力 [LEVEL] %にする',
-        'mbitMore.playTone': '[FREQ] Hzの音を [VOL] %の大きさで鳴らす',
-        'mbitMore.stopTone': '音を止める',
-        'mbitMore.setServo': 'ピン [PIN] をサーボ [ANGLE] 度にする',
-        'mbitMore.digitalValueMenu.Low': 'ロー',
-        'mbitMore.digitalValueMenu.High': 'ハイ',
-        'mbitMore.axisMenu.x': 'x',
-        'mbitMore.axisMenu.y': 'y',
-        'mbitMore.axisMenu.z': 'z',
-        'mbitMore.axisMenu.absolute': '大きさ',
-        'mbitMore.pinModeMenu.pullNone': '開放',
-        'mbitMore.pinModeMenu.pullUp': 'プルアップ',
-        'mbitMore.pinModeMenu.pullDown': 'プルダウン',
-        'mbitMore.listenPinEventType': 'ピン [PIN] で [EVENT_TYPE] ',
-        'mbitMore.pinEventTypeMenu.none': 'イベントを受けない',
-        'mbitMore.pinEventTypeMenu.edge': 'エッジイベントを受ける',
-        'mbitMore.pinEventTypeMenu.pulse': 'パルスイベントを受ける',
-        'mbitMore.pinEventTypeMenu.touch': 'タッチイベントを受ける',
-        'mbitMore.whenPinEvent': 'ピン [PIN] で [EVENT] イベントが上がった',
-        'mbitMore.pinEventMenu.rise': 'ライズ',
-        'mbitMore.pinEventMenu.fall': 'フォール',
-        'mbitMore.pinEventMenu.pulseHigh': 'ハイパルス',
-        'mbitMore.pinEventMenu.pulseLow': 'ローパルス',
-        'mbitMore.getPinEventValue': 'ピン [PIN] の [EVENT]',
-        'mbitMore.pinEventTimestampMenu.rise': 'ライズの時刻',
-        'mbitMore.pinEventTimestampMenu.fall': 'フォールの時刻',
-        'mbitMore.pinEventTimestampMenu.pulseHigh': 'ハイパルスの期間',
-        'mbitMore.pinEventTimestampMenu.pulseLow': 'ローパルスの期間',
-        'mbitMore.whenDataReceived': 'micro:bit からラベル [LABEL] のデータを受け取ったとき',
-        'mbitMore.getDataLabeled': 'ラベル [LABEL] のデータ',
-        'mbitMore.sendData': 'micro:bit へデータ [DATA] にラベル [LABEL] を付けて送る',
-        'mbitMore.connectionStateMenu.connected': 'つながった',
-        'mbitMore.connectionStateMenu.disconnected': '切れた',
-        'mbitMore.whenConnectionChanged': 'micro:bit と[STATE]とき',
-        'mbitMore.selectCommunicationRoute.connectWith': 'つなぎ方',
-        'mbitMore.selectCommunicationRoute.bluetooth': 'Bluetooth',
-        'mbitMore.selectCommunicationRoute.usb': 'USB',
-        'mbitMore.selectCommunicationRoute.connect': 'つなぐ',
-        'mbitMore.selectCommunicationRoute.cancel': 'やめる'
-    },
-    'ja-Hira': {
-        'mbitMore.whenButtonEvent': '[NAME] ボタンが [EVENT] とき',
-        'mbitMore.buttonIDMenu.a': 'A',
-        'mbitMore.buttonIDMenu.b': 'B',
-        'mbitMore.buttonEventMenu.down': 'おされた',
-        'mbitMore.buttonEventMenu.hold': 'ながおしされた',
-        'mbitMore.buttonEventMenu.up': 'はなされた',
-        'mbitMore.buttonEventMenu.click': 'クリックされた',
-        'mbitMore.buttonEventMenu.longClick': 'ロングクリックされた',
-        'mbitMore.buttonEventMenu.doubleClick': 'ダブルクリックされた',
-        'mbitMore.isButtonPressed': '[NAME] ボタンがおされている',
-        'mbitMore.whenTouchEvent': 'ピン [NAME] が [EVENT] とき',
-        'mbitMore.isPinTouched': 'ピン [NAME] がタッチされている',
-        'mbitMore.touchIDMenu.logo': 'ロゴ',
-        'mbitMore.touchEventMenu.touched': 'タッチされた',
-        'mbitMore.touchEventMenu.hold': 'ながおしされた',
-        'mbitMore.touchEventMenu.released': 'はなされた',
-        'mbitMore.touchEventMenu.tapped': 'タップされた',
-        'mbitMore.touchEventMenu.longTapped': 'ロングタップされた',
-        'mbitMore.touchEventMenu.doubleTapped': 'ダブルタップされた',
-        'mbitMore.whenGesture': '[GESTURE] とき',
-        'mbitMore.gesturesMenu.tiltUp': 'うえへかたむいた',
-        'mbitMore.gesturesMenu.tiltDown': 'したへかたむいた',
-        'mbitMore.gesturesMenu.tiltLeft': 'ひだりへかたむいた',
-        'mbitMore.gesturesMenu.tiltRight': 'みぎへかたむいた',
-        'mbitMore.gesturesMenu.faceUp': 'おもてになった',
-        'mbitMore.gesturesMenu.faceDown': 'うらになった',
-        'mbitMore.gesturesMenu.freefall': 'おちた',
-        'mbitMore.gesturesMenu.g3': '3Gかかった',
-        'mbitMore.gesturesMenu.g6': '6Gかかった',
-        'mbitMore.gesturesMenu.g8': '8Gかかった',
-        'mbitMore.gesturesMenu.shake': 'ゆさぶられた',
-        'mbitMore.displayMatrix': 'パターン [MATRIX] をひょうじする',
-        'mbitMore.displayText': 'もじ [TEXT] を [DELAY] ミリびょうかんかくでながす',
-        'mbitMore.clearDisplay': 'がめんをけす',
-        'mbitMore.isPinHigh': 'ピン [PIN] がハイである',
-        'mbitMore.lightLevel': 'あかるさ',
-        'mbitMore.temperature': 'おんど',
-        'mbitMore.compassHeading': 'きたからのかくど',
-        'mbitMore.magneticForce': 'じりょく [AXIS]',
-        'mbitMore.acceleration': 'かそくど [AXIS]',
-        'mbitMore.pitch': 'ピッチ',
-        'mbitMore.roll': 'ロール',
-        'mbitMore.soundLevel': 'おとのおおきさ',
-        'mbitMore.analogValue': 'ピン [PIN] のアナログレベル',
-        'mbitMore.setPullMode': 'ピン [PIN] を [MODE] にゅうりょくにする',
-        'mbitMore.setDigitalOut': 'ピン [PIN] をデジタルしゅつりょく [LEVEL] にする',
-        'mbitMore.setAnalogOut': 'ピン [PIN] をアナログしゅつりょく [LEVEL] パーセントにする',
-        'mbitMore.playTone': '[FREQ] ヘルツのおとを [VOL] パーセントの大きさで鳴らす',
-        'mbitMore.stopTone': 'おとをとめる',
-        'mbitMore.setServo': 'ピン [PIN] をサーボ [ANGLE] どにする',
-        'mbitMore.digitalValueMenu.Low': 'ロー',
-        'mbitMore.digitalValueMenu.High': 'ハイ',
-        'mbitMore.axisMenu.x': 'x',
-        'mbitMore.axisMenu.y': 'y',
-        'mbitMore.axisMenu.z': 'z',
-        'mbitMore.axisMenu.absolute': 'おおきさ',
-        'mbitMore.pinModeMenu.pullNone': 'かいほう',
-        'mbitMore.pinModeMenu.pullUp': 'プルアップ',
-        'mbitMore.pinModeMenu.pullDown': 'プルダウン',
-        'mbitMore.listenPinEventType': 'ピン [PIN] で [EVENT_TYPE]',
-        'mbitMore.pinEventTypeMenu.none': 'イベントをうけない',
-        'mbitMore.pinEventTypeMenu.edge': 'エッジイベントをうける',
-        'mbitMore.pinEventTypeMenu.pulse': 'パルスイベントをうける',
-        'mbitMore.pinEventTypeMenu.touch': 'タッチイベントをうける',
-        'mbitMore.whenPinEvent': 'ピン [PIN] で [EVENT] イベントがあがった',
-        'mbitMore.pinEventMenu.rise': 'ライズ',
-        'mbitMore.pinEventMenu.fall': 'フォール',
-        'mbitMore.pinEventMenu.pulseHigh': 'ハイパルス',
-        'mbitMore.pinEventMenu.pulseLow': 'ローパルス',
-        'mbitMore.getPinEventValue': 'ピン [PIN] の [EVENT]',
-        'mbitMore.pinEventTimestampMenu.rise': 'ライズのじかん',
-        'mbitMore.pinEventTimestampMenu.fall': 'フォールのじかん',
-        'mbitMore.pinEventTimestampMenu.pulseHigh': 'ハイパルスのきかん',
-        'mbitMore.pinEventTimestampMenu.pulseLow': 'ローパルスのきかん',
-        'mbitMore.whenDataReceived': 'micro:bit からラベル [LABEL] のデータをうけとったとき',
-        'mbitMore.getDataLabeled': 'ラベル [LABEL] のデータ',
-        'mbitMore.sendData': 'micro:bit へデータ [DATA] にラベル [LABEL] をつけておくる',
-        'mbitMore.connectionStateMenu.connected': 'つながった',
-        'mbitMore.connectionStateMenu.disconnected': 'きれた',
-        'mbitMore.whenConnectionChanged': 'micro:bit と[STATE]とき',
-        'mbitMore.selectCommunicationRoute.connectWith': 'つなぎかた',
-        'mbitMore.selectCommunicationRoute.bluetooth': 'むせん',
-        'mbitMore.selectCommunicationRoute.usb': 'ゆうせん',
-        'mbitMore.selectCommunicationRoute.connect': 'つなぐ',
-        'mbitMore.selectCommunicationRoute.cancel': 'やめる'
-    },
-    'pt-br': {
-        'mbitMore.lightLevel': 'Intensidade da Luz',
-        'mbitMore.compassHeading': 'Está em direção ao Norte',
-        'mbitMore.magneticForce': 'Força Magnética [AXIS]',
-        'mbitMore.acceleration': 'Aceleração no Eixo[AXIS]',
-        'mbitMore.analogValue': 'Ler Pino Analógico [PIN]',
-        'mbitMore.setInput': 'Definir Pino[PIN] como entrada',
-        'mbitMore.setAnalogOut': 'Definir pino PWM[PIN]com[LEVEL]',
-        'mbitMore.setServo': 'Definir Servo no pino [PIN]com ângulo de [ANGLE]॰',
-        'mbitMore.digitalValueMenu.Low': 'desligado',
-        'mbitMore.digitalValueMenu.High': 'ligado'
-    },
-    'pt': {
-        'mbitMore.lightLevel': 'Intensidade da Luz',
-        'mbitMore.compassHeading': 'Está em direção ao Norte',
-        'mbitMore.magneticForce': 'Força Magnética [AXIS]',
-        'mbitMore.acceleration': 'Aceleração no Eixo[AXIS]',
-        'mbitMore.analogValue': 'Ler Pino Analógico [PIN]',
-        'mbitMore.setInput': 'Definir Pino[PIN] como entrada',
-        'mbitMore.setAnalogOut': 'Definir pino PWM[PIN]com[LEVEL]',
-        'mbitMore.setServo': 'Definir Servo no pino [PIN]com ângulo de [ANGLE]॰',
-        'mbitMore.digitalValueMenu.Low': 'desligado',
-        'mbitMore.digitalValueMenu.High': 'ligado'
-    }
+export {
+    MbitMoreBlocks as default,
+    MbitMoreBlocks as blockClass
 };
-
-module.exports = MbitMoreBlocks;
