@@ -22,9 +22,9 @@ var translationMap = {
   }
 };
 var entry = {
-  name: 'Microbit More',
+  name: 'Boson',
   extensionId: 'microbitMore',
-  extensionURL: 'https://microbit-more.github.io/dist/microbitMore.mjs',
+  extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
   collaborator: 'Yengawa Lab',
   iconURL: img$3,
   insetIconURL: img$2,
@@ -54,7 +54,7 @@ var entry = {
     });
   },
 
-  helpLink: 'https://microbit-more.github.io/',
+  helpLink: 'https://eu-rate-boson.github.io/',
   setFormatMessage: function setFormatMessage(formatter) {
     formatMessage$1 = formatter;
   },
@@ -1376,11 +1376,10 @@ function _assertThisInitialized(self) {
 }
 
 function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
-
   return _setPrototypeOf(o, p);
 }
 
@@ -1423,7 +1422,7 @@ function _possibleConstructorReturn(self, call) {
 }
 
 function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
   return _getPrototypeOf(o);
@@ -1729,7 +1728,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
           var dataView = event.target.value;
           onCharacteristicChanged(uint8ArrayToBase64$2(new Uint8Array(dataView.buffer)));
         });
-        characteristic.startNotifications();
+        return characteristic.startNotifications();
       });
     }
     /**
@@ -1753,7 +1752,9 @@ var WebBLE$1 = /*#__PURE__*/function () {
         return service.getCharacteristic(characteristicId);
       }).then(function (characteristic) {
         if (optStartNotifications) {
-          _this3.startNotifications(serviceId, characteristicId, onCharacteristicChanged);
+          return _this3.startNotifications(serviceId, characteristicId, onCharacteristicChanged).then(function () {
+            return characteristic.readValue();
+          });
         }
 
         return characteristic.readValue();
@@ -2920,7 +2921,7 @@ var EXTENSION_ID = 'microbitMore';
  * @type {string}
  */
 
-var extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
+var extensionURL = 'https://eu-rate-boson.github.io/dist/microbitMore.mjs';
 /**
  * Icon png to be displayed at the left edge of each extension block, encoded as a data URI.
  * @type {string}
@@ -6440,7 +6441,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      * @return {string} - the name of this extension.
      */
     function get() {
-      return 'Microbit More';
+      return 'Boson';
     }
     /**
      * @return {string} - the ID of this extension.
