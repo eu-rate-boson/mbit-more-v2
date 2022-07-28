@@ -15001,7 +15001,7 @@ var EXTENSION_ID = 'microbitMore';
  * @type {string}
  */
 
-var extensionURL = 'https://yokobond.github.io/mbit-more-v2/dist/microbitMore.mjs';
+var extensionURL = 'https://eu-rate-boson.github.io/mbit-more-v2/dist/microbitMore.mjs';
 /**
  * Icon png to be displayed at the left edge of each extension block, encoded as a data URI.
  * @type {string}
