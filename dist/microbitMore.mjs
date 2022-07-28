@@ -8277,9 +8277,9 @@ var translationMap = {
   }
 };
 var entry = {
-  name: 'Microbit More',
+  name: 'Boson',
   extensionId: 'microbitMore',
-  extensionURL: 'https://yokobond.github.io/mbit-more-v2/dist/microbitMore.mjs',
+  extensionURL: 'https://eu-rate-boson.github.io/mbit-more-v2/dist/microbitMore.mjs',
   collaborator: 'Yengawa Lab',
   iconURL: img,
   insetIconURL: img$1,
@@ -8301,7 +8301,7 @@ var entry = {
     description: "Message to help people connect to their micro:bit.",
     id: "gui.extension.microbit.connectingMessage"
   }),
-  helpLink: 'https://microbit-more.github.io/',
+  helpLink: 'https://eu-rate-boson.github.io/',
   translationMap: translationMap
 };
 
@@ -16965,7 +16965,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      * @return {string} - the name of this extension.
      */
     get: function get() {
-      return 'Microbit More';
+      return 'Boson';
     }
     /**
      * @return {string} - the ID of this extension.
