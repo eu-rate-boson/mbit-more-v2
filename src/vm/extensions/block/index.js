@@ -38,7 +38,7 @@ const EXTENSION_ID = 'microbitMore';
  * When it was loaded as a module, 'extensionURL' will be replaced a URL which is retrieved from.
  * @type {string}
  */
-let extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
+let extensionURL = 'https://eu-rate-boson.github.io/dist/microbitMore.mjs';
 
 /**
  * Enum for version of the hardware.
@@ -1659,7 +1659,7 @@ class MbitMoreBlocks {
     static get EXTENSION_NAME () {
         return formatMessage({
             id: 'mbitMore.name',
-            default: 'MicroBit More',
+            default: 'Boson',
             description: 'name of the extension'
         });
     }
