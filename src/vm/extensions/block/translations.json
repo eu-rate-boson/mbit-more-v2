@@ -1,7 +1,7 @@
 {
     "de": {
       "mbitMore.name":"Boson",
-      "mbitMore.whenButtonEvent": "quando il bottone [NAME] è [EVENT]",
+      "mbitMore.whenButtonEvent": "wenn die Taste [NAME] ist [EVENT]",
       "mbitMore.buttonIDMenu.a": "A",
       "mbitMore.buttonIDMenu.b": "B",
       "mbitMore.buttonEventMenu.down": "niedrig",
