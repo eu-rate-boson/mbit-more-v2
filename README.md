@@ -37,7 +37,7 @@ https://eu-rate-boson.github.io/dist/microbitMore.mjs
 👤 **Scuola di RObotica**
 * Website: http://www.scuoladirobotica.it/
 
-* with the help of [@yokobond](https://github.com/yokobond)'s code
+* Thanks to [@yokobond](https://github.com/yokobond)'s Microbit More
 
 
 ## 📝 License
