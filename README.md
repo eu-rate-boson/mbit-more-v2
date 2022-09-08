@@ -1,14 +1,8 @@
-<h1 align="center">MicroBit More v2</h1>
+<h1 align="center">Boson</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.2.4-blue.svg?cacheSeconds=2592000" />
-  <a href="https://microbit-more.github.io/mbit-more-v2" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
-  </a>
-  <a href="https://github.com/microbit-more/mbit-more-v2/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
-  </a>
-  <a href="https://github.com/microbit-more/mbit-more-v2/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/microbit-more/mbit-more-v2" />
+  <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" /></a>
+  <a href="https://github.com/eu-rate-boson/mbit-more-v2/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/eu-rate-boson/mbit-more-v2" />
   </a>
 </p>
 <p>
@@ -22,7 +16,7 @@ This is an extension for [Scratch3 by MIT](https://scratch.mit.edu/). You can co
 
 ## What You Can Do With This Extension
 
-Open a Scratch3-Mod application ✨ [Microbit More](https://microbit-more.github.io/) to use this extension. You can code using its extended blocks and all blocks in normal Scratch3 on this app. 
+Open the Scratch3-Mod application ✨ [Boson](https://eu-rate-boson.github.io/) to use this extension. You can code using its extended blocks and all blocks in normal Scratch3 on this app. 
 
 You don't need to run [Scratch Link](https://scratch.mit.edu/microbit) when your browser is Chrome, Edge or 'Web Bluetooth API' supporting one (the browser in Chromebook, [‎Scrub](https://apps.apple.com/jp/app/scrub-web-browser/id1569777095) in iPadOS, like that).
 
@@ -35,29 +29,18 @@ This extension can be used with other extension in [Xcratch](https://xcratch.git
 3. Select 'Extension Loader' extension
 4. Type the module URL in the input field 
 ```
-https://microbit-more.github.io/dist/microbitMore.mjs
+https://eu-rate-boson.github.io/dist/microbitMore.mjs
 ```
 
 ## Author
 
-👤 **Koji Yokokawa**
+👤 **Scuola di RObotica**
+* Website: http://www.scuoladirobotica.it/
 
-* Website: http://www.yengawa.com/
-* Github: [@yokobond](https://github.com/yokobond)
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/microbit-more/mbit-more-v2/issues). You can also take a look at the [contributing guide](https://github.com/microbit-more/mbit-more-v2/blob/master/CONTRIBUTING.md).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
+* Thanks to [@yokobond](https://github.com/yokobond)'s Microbit More
 
 
 ## 📝 License
 
-Copyright © 2020-2021 [Koji Yokokawa](https://github.com/yokobond).<br />
-This project is [MIT](https://github.com/microbit-more/mbit-more-v2/blob/master/LICENSE) licensed.
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Copyright © 2022 Scuola di Robotica.<br />
+This project is [MIT](https://github.com/eu-rate-boson/mbit-more-v2/blob/master/LICENSE) licensed.

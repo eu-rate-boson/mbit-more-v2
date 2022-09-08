@@ -8,6 +8,9 @@ import microbitMoreConnectionSmallIconURL from './connection-small-icon.svg';
 const version = 'v2-0.2.4';
 
 const translationMap = {
+    'it': {
+        'gui.extension.microbitMore.description': `Gioca con tutte le funzioni di Microbit. (${version})`
+    },
     'en': {
         'gui.extension.microbitMore.description': `Play with all functions of micro:bit. (${version})`
     },
