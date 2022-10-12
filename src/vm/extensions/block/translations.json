@@ -305,7 +305,7 @@
       "mbitMore.temperature": "temperatura °C",
       "mbitMore.compassHeading": "direzione bussola °",
       "mbitMore.magneticForce": "forza magnetica µT [AXIS]",
-      "mbitMore.acceleration": "accellerazione mg [AXIS]",
+      "mbitMore.acceleration": "accelerazione mg [AXIS]",
       "mbitMore.pitch": "pitch °",
       "mbitMore.roll": "rotazione °",
       "mbitMore.soundLevel": "suono DB",
