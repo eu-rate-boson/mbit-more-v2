@@ -2490,7 +2490,6 @@ class MbitMoreBlocks {
                         }
                     }
                 },
-                '---',
                 {
                     opcode: 'getAnalogValue',
                     text: formatMessage({
@@ -2506,6 +2505,7 @@ class MbitMoreBlocks {
                         }
                     }
                 },
+                '---',
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
