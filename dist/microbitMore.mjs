@@ -5323,8 +5323,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             AXIS: {
               type: ArgumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.Absolute
+              menu: 'axis'
             }
           }
         }, {
@@ -5338,8 +5337,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             AXIS: {
               type: ArgumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.X
+              menu: 'axis'
             }
           }
         }, '---', {
@@ -5353,8 +5351,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             PIN: {
               type: ArgumentType.STRING,
-              menu: 'analogInPins',
-              defaultValue: '0'
+              menu: 'analogInPins'
             }
           }
         }, {
