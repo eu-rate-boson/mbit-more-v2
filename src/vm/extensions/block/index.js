@@ -2471,8 +2471,7 @@ class MbitMoreBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis',
-                            defaultValue: AxisSymbol.Absolute
+                            menu: 'axis'
                         }
                     }
                 },
@@ -2487,8 +2486,7 @@ class MbitMoreBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis',
-                            defaultValue: AxisSymbol.X
+                            menu: 'axis'
                         }
                     }
                 },
@@ -2504,8 +2502,7 @@ class MbitMoreBlocks {
                     arguments: {
                         PIN: {
                             type: ArgumentType.STRING,
-                            menu: 'analogInPins',
-                            defaultValue: '0'
+                            menu: 'analogInPins'
                         }
                     }
                 },
