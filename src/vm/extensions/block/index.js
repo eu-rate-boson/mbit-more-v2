@@ -2764,10 +2764,15 @@ class MbitMoreBlocks {
                     opcode: 'redirectNeopixel',
                     text: formatMessage({
                         id:'mbitMore.redirectNeopixel',
-                        default: 'To use the NeoPixel led strip click here',
+                        default: 'To use [LABEL] click here',
                         description: 'To use the NeoPixel led strip click here'
                     }),
                     blockType: BlockType.REPORTER
+                    arguments: {
+                        LABEL: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'NeoPixel Leds'
+                        }
                 }
             ],
             menus: {
@@ -3429,7 +3434,7 @@ class MbitMoreBlocks {
     /**
      * Redirect to Neopixel Microbit Control with MakeCode.
      * @param {object} args - the block's arguments.
-     * @return {?string} null.
+     * @return {string} string.
      */
     redirectNeopixel (args)
     {
@@ -3437,7 +3442,7 @@ class MbitMoreBlocks {
         {
             window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
             hasAlreadyBeenRedirected = true;
-            return null;
+            return "NeoPixel with MicroBit";
         }
     }
 }
