@@ -2198,9 +2198,6 @@ class MbitMoreBlocks {
         ];
     }
     
-    /**
-     * @return {array} - Menu items for connection state.
-     */
     get IMPLEMENTATIONS_MENU () {
         return [
             {
@@ -2209,15 +2206,15 @@ class MbitMoreBlocks {
                     default: 'NeoPixel LEDs',
                     description: 'label for NeoPixel LEDs'
                 }),
-                value: 'neopixel'
+                value: 'NEOPIXEL'
             },
             {
                 text: formatMessage({
-                    id: 'mbitMore.implementationsMenu.default',
+                    id: 'mbitMore.implementationsMenu.none',
                     default: 'None',
                     description: 'label for default empty case implementation'
                 }),
-                value: 'default'
+                value: 'NONE'
             }
         ];
     }
@@ -2783,9 +2780,9 @@ class MbitMoreBlocks {
                 },
                 '---',
                 {
-                    opcode: 'redirectNeopixel',
+                    opcode: 'redirectImplementation',
                     text: formatMessage({
-                        id:'mbitMore.redirectNeopixel',
+                        id:'mbitMore.redirectImplementation',
                         default: 'To use [IMPLEMENTATION] click here',
                         description: 'To use the NeoPixel led strip click here'
                     }),
@@ -2794,7 +2791,7 @@ class MbitMoreBlocks {
                         IMPLEMENTATION: {
                             type: ArgumentType.STRING,
                             menu: 'implementationsMenu',
-                            defaultValue: 'neopixel'
+                            defaultValue: 'NEOPIXEL'
                         }
                     }
                 }
@@ -3467,7 +3464,7 @@ class MbitMoreBlocks {
      */
     redirectNeopixel (args)
     {
-        if (args.IMPLEMENTATION === 'neopixel')
+        if (args.IMPLEMENTATION === 'NEOPIXEL')
         {
             window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
             return "NeoPixel with MicroBit";
