@@ -9,8 +9,6 @@ import translations from './translations.json';
 import BLE from './ble';
 import WebSerial from './serial-web';
 
-let hasAlreadyBeenRedirected = false;
-
 const uint8ArrayToBase64 = array => window.btoa(String.fromCharCode(...array));
 const base64ToUint8Array = base64 => {
     const raw = window.atob(base64);
@@ -2851,7 +2849,7 @@ class MbitMoreBlocks {
                     items: this.CONNECTION_STATE_MENU
                 },
                 implementationsMenu: {
-                    acceptReporters: true,
+                    acceptReporters: false,
                     items: this.IMPLEMENTATIONS_MENU
                 }
             },
@@ -3460,12 +3458,9 @@ class MbitMoreBlocks {
      */
     redirectNeopixel (args)
     {
-        if (hasAlreadyBeenRedirected == false)
-        {
-            window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
-            hasAlreadyBeenRedirected = true;
-            return "NeoPixel with MicroBit";
-        }
+         window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
+         hasAlreadyBeenRedirected = true;
+         return "NeoPixel with MicroBit";
     }
 }
 
