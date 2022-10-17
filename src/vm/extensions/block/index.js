@@ -2773,6 +2773,7 @@ class MbitMoreBlocks {
                             type: ArgumentType.STRING,
                             defaultValue: 'NeoPixel Leds'
                         }
+                    }
                 }
             ],
             menus: {
