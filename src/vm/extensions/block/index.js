@@ -2764,10 +2764,15 @@ class MbitMoreBlocks {
                     opcode: 'redirectNeopixel',
                     text: formatMessage({
                         id:'mbitMore.redirectNeopixel',
-                        default: 'To use the NeoPixel led strip click here',
+                        default: 'To use [LABEL] click here',
                         description: 'To use the NeoPixel led strip click here'
                     }),
                     blockType: BlockType.REPORTER
+                    arguments: {
+                        LABEL: {
+                            type: ArgumentType.STRING,
+                            defaultValue: 'NeoPixel Leds'
+                        }
                 }
             ],
             menus: {
