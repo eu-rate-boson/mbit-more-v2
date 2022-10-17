@@ -2767,7 +2767,7 @@ class MbitMoreBlocks {
                         default: 'To use [LABEL] click here',
                         description: 'To use the NeoPixel led strip click here'
                     }),
-                    blockType: BlockType.REPORTER
+                    blockType: BlockType.REPORTER,
                     arguments: {
                         LABEL: {
                             type: ArgumentType.STRING,
