@@ -2756,6 +2756,16 @@ class MbitMoreBlocks {
                             defaultValue: 'data'
                         }
                     }
+                },
+                '---',
+                {
+                    opcode: 'redirectNeopixel',
+                    text: formatMessage({
+                        id:'mbitMore.redirectNeopixel',
+                        default: 'To use the NeoPixel led strip click here',
+                        description: 'To use the NeoPixel led strip click here'
+                    }),
+                    blockType: BlockType.REPORTER
                 }
             ],
             menus: {
@@ -3412,6 +3422,17 @@ class MbitMoreBlocks {
     whenConnectionChanged (args) {
         const state = (args.STATE === 'connected');
         return (state === this._peripheral.isConnected());
+    }
+    
+    /**
+     * Redirect to Neopixel Microbit Control with MakeCode.
+     * @param {object} args - the block's arguments.
+     * @return {?string} null.
+     */
+    redirectNeopixel (args)
+    {
+        window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
+        return null;
     }
 }
 
