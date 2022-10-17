@@ -3459,7 +3459,6 @@ class MbitMoreBlocks {
     redirectNeopixel (args)
     {
          window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
-         hasAlreadyBeenRedirected = true;
          return "NeoPixel with MicroBit";
     }
 }
