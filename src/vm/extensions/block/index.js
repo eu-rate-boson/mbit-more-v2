@@ -2199,6 +2199,22 @@ class MbitMoreBlocks {
             }
         ];
     }
+    
+    /**
+     * @return {array} - Menu items for connection state.
+     */
+    get IMPLEMENTATIONS_MENU () {
+        return [
+            {
+                text: formatMessage({
+                    id: 'mbitMore.implementationsMenu.neopixel',
+                    default: 'NeoPixel Leds',
+                    description: 'label for NeoPixel Leds'
+                }),
+                value: 'neopixel'
+            }
+        ];
+    }
 
     /**
      * Construct a set of MicroBit blocks.
@@ -2771,7 +2787,8 @@ class MbitMoreBlocks {
                     arguments: {
                         LABEL: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'NeoPixel Leds'
+                            menu: 'implementationsMenu',
+                            defaultValue: 'neopixel'
                         }
                     }
                 }
@@ -2832,6 +2849,10 @@ class MbitMoreBlocks {
                 connectionStateMenu: {
                     acceptReporters: false,
                     items: this.CONNECTION_STATE_MENU
+                },
+                implementationsMenu: {
+                    acceptReporters: true,
+                    items: this.IMPLEMENTATIONS_MENU
                 }
             },
             translationMap: translations
