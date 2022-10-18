@@ -3457,12 +3457,12 @@ class MbitMoreBlocks {
     }
     
     /**
-     * Redirect to Neopixel Microbit Control with MakeCode.
+     * Redirect to implementations.
      * @param {object} args - the block's arguments.
      * @property {string} args.IMPLEMENTATION - the Implementation to check.
      * @return {string} string.
      */
-    redirectNeopixel (args)
+    redirectImplementation (args)
     {
         if (args.IMPLEMENTATION === 'NEOPIXEL')
         {
