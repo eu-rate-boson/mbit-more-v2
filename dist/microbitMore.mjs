@@ -5115,6 +5115,20 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
       }];
     }
   }, {
+    key: "IMPLEMENTATIONS_MENU ",
+    get: function get() {
+        return [
+            {
+                text: formatMessage({
+                    id: 'mbitMore.implementationsMenu.neopixel',
+                    default: 'NeoPixel LEDs',
+                    description: 'label for NeoPixel LEDs'
+                }),
+                value: 'neopixel'
+            }
+        ];
+    }
+  },{
     key: "getInfo",
     value: function getInfo() {
       this.setupTranslations();
@@ -5587,6 +5601,23 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: 'data'
             }
           }
+        },
+        '---',
+        {
+            opcode: 'redirectImplementation',
+            text: formatMessage({
+                id:'mbitMore.redirectImplementation',
+                default: 'To use [IMPLEMENTATION] click here',
+                description: 'To use the NeoPixel led strip click here'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                IMPLEMENTATION: {
+                    type: ArgumentType.STRING,
+                    menu: 'implementationsMenu',
+                    defaultValue: 'neopixel'
+                }
+            }
         }],
         menus: {
           buttonIDMenu: {
@@ -5644,6 +5675,10 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           connectionStateMenu: {
             acceptReporters: false,
             items: this.CONNECTION_STATE_MENU
+          },
+          implementationsMenu: {
+              acceptReporters: false,
+              items: this.IMPLEMENTATIONS_MENU
           }
         },
         // eslint-disable-next-line no-use-before-define
@@ -6420,7 +6455,17 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
     /**
      * Setup format-message for this extension.
      */
-
+  }, {
+    key: "redirectImplementation ",
+    value: function redirectImplementation(args) {
+        window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
+        return "NeoPixel with MicroBit";
+    }
+    /**
+     * Redirect to implementations.
+     * @param {object} args - the block's arguments.
+     * @return {string} string.
+     */
   }, {
     key: "setupTranslations",
     value: function setupTranslations() {
@@ -6559,203 +6604,6 @@ var extensionTranslations = {
     'mbitMore.selectCommunicationRoute.usb': 'USB',
     'mbitMore.selectCommunicationRoute.connect': 'つなぐ',
     'mbitMore.selectCommunicationRoute.cancel': 'やめる'
-  },'it': {
-    'mbitMore.whenButtonEvent': 'quando il bottone [NAME] è [EVENT]',
-    'mbitMore.buttonIDMenu.a': 'A',
-    'mbitMore.buttonIDMenu.b': 'B',
-    'mbitMore.buttonEventMenu.down': 'basso',
-    'mbitMore.buttonEventMenu.hold': 'premuto',
-    'mbitMore.buttonEventMenu.up': 'alto',
-    'mbitMore.buttonEventMenu.click': 'click',
-    'mbitMore.buttonEventMenu.longClick': 'click lungo',
-    'mbitMore.buttonEventMenu.doubleClick': 'doppio click',
-    'mbitMore.isButtonPressed': 'bottone [NAME] premuto?',
-    'mbitMore.whenTouchEvent': 'quando il pin [NAME] è [EVENT]',
-    'mbitMore.isPinTouched': 'il pin [NAME] è stato toccato',
-    'mbitMore.touchIDMenu.logo': 'logo',
-    'mbitMore.touchEventMenu.touched': 'toccato',
-    'mbitMore.touchEventMenu.hold': 'premuto',
-    'mbitMore.touchEventMenu.released': 'rilasciato',
-    'mbitMore.touchEventMenu.tapped': 'premuto',
-    'mbitMore.touchEventMenu.longTapped': 'premuto a lungo',
-    'mbitMore.touchEventMenu.doubleTapped': 'premuto due volte',
-    'mbitMore.whenGesture': 'quando [GESTURE]',
-    'mbitMore.gesturesMenu.tiltUp': 'inclinato in avanti',
-    'mbitMore.gesturesMenu.tiltDown': 'inclinato in basso',
-    'mbitMore.gesturesMenu.tiltLeft': 'inclinato a sinstra',
-    'mbitMore.gesturesMenu.tiltRight': 'inclinato a destra',
-    'mbitMore.gesturesMenu.faceUp': 'faccia in su',
-    'mbitMore.gesturesMenu.faceDown': 'faccia in giù',
-    'mbitMore.gesturesMenu.freefall': 'caduta libera',
-    'mbitMore.gesturesMenu.g3': '3G',
-    'mbitMore.gesturesMenu.g6': '6G',
-    'mbitMore.gesturesMenu.g8': '(G)',
-    'mbitMore.gesturesMenu.shake': 'scosso',
-    'mbitMore.displayMatrix': 'mostra motivo [MATRIX]',
-    'mbitMore.displayText': 'mostra testo [TEXT] per [DELAY] ms',
-    'mbitMore.clearDisplay': 'pulisci display',
-    'mbitMore.isPinHigh': 'è il [PIN] alto?',
-    'mbitMore.lightLevel': 'luminosità',
-    'mbitMore.temperature': 'temperatura',
-    'mbitMore.compassHeading': 'direzione',
-    'mbitMore.magneticForce': 'forza magnetica [AXIS]',
-    'mbitMore.acceleration': 'accellerazione [AXIS]',
-    'mbitMore.pitch': 'tono',
-    'mbitMore.roll': 'rotazione',
-    'mbitMore.soundLevel': 'suono',
-    'mbitMore.analogValue': 'valore analogico del pin [PIN]',
-    'mbitMore.setPullMode': 'imposta il pin [PIN] a input [MODE]',
-    'mbitMore.setDigitalOut': 'imposta il pin output digitale [PIN] a [LEVEL]',
-    'mbitMore.setAnalogOut': 'imposta il pin output analogico [PIN] a [LEVEL]',
-    'mbitMore.playTone': 'suona tono [FREQ] a volume [VOL]',
-    'mbitMore.stopTone': 'ferma tono',
-    'mbitMore.setServo': 'imposta il pin servo [PIN] all\'angolo [ANGLE]',
-    'mbitMore.digitalValueMenu.Low': 'basso',
-    'mbitMore.digitalValueMenu.High': 'alto',
-    'mbitMore.axisMenu.x': 'x',
-    'mbitMore.axisMenu.y': 'y',
-    'mbitMore.axisMenu.z': 'z',
-    'mbitMore.axisMenu.absolute': 'assoluto',
-    'mbitMore.pinModeMenu.pullNone': 'nessuno',
-    'mbitMore.pinModeMenu.pullUp': 'passa alto',
-    'mbitMore.pinModeMenu.pullDown': 'passa basso',
-    'mbitMore.listenPinEventType': 'controlla l\'evento [EVENT_TYPE] sul pin [PIN]',
-    'mbitMore.pinEventTypeMenu.none': 'nessuno',
-    'mbitMore.pinEventTypeMenu.edge': 'soglia',
-    'mbitMore.pinEventTypeMenu.pulse': 'pulsazione',
-    'mbitMore.pinEventTypeMenu.touch': 'tocco',
-    'mbitMore.whenPinEvent': 'quando il pin [PIN] prende l\'evento [EVENT]',
-    'mbitMore.pinEventMenu.rise': 'salita',
-    'mbitMore.pinEventMenu.fall': 'discesa',
-    'mbitMore.pinEventMenu.pulseHigh': 'pulsazione alta',
-    'mbitMore.pinEventMenu.pulseLow': 'pulsazione bassa',
-    'mbitMore.getPinEventValue': 'valore del [PIN] all\'evento [EVENT]',
-    'mbitMore.pinEventTimestampMenu.rise': 'salita',
-    'mbitMore.pinEventTimestampMenu.fall': 'discesa',
-    'mbitMore.pinEventTimestampMenu.pulseHigh': 'pulsazione alta',
-    'mbitMore.pinEventTimestampMenu.pulseLow': 'pulsazione bassa',
-    'mbitMore.whenDataReceived': 'Quando il microbit riceve dati con la scritta [LABEL]',
-    'mbitMore.getDataLabeled': 'prendi il dato che ha la scritta [LABEL]',
-    'mbitMore.sendData': 'invia il dato [DATA] con la scritta [LABEL]',
-    'mbitMore.connectionStateMenu.connected': 'connesso',
-    'mbitMore.connectionStateMenu.disconnected': 'disconnesso',
-    'mbitMore.whenConnectionChanged': 'quando la connesione passa a [STATE]',
-    'mbitMore.selectCommunicationRoute.connectWith': 'connetti con',
-    'mbitMore.selectCommunicationRoute.bluetooth': 'Bluetooth',
-    'mbitMore.selectCommunicationRoute.usb': 'USB',
-    'mbitMore.selectCommunicationRoute.connect': 'connetti',
-    'mbitMore.selectCommunicationRoute.cancel': 'cancella'
-  },
-  'ja-Hira': {
-    'mbitMore.whenButtonEvent': '[NAME] ボタンが [EVENT] とき',
-    'mbitMore.buttonIDMenu.a': 'A',
-    'mbitMore.buttonIDMenu.b': 'B',
-    'mbitMore.buttonEventMenu.down': 'おされた',
-    'mbitMore.buttonEventMenu.hold': 'ながおしされた',
-    'mbitMore.buttonEventMenu.up': 'はなされた',
-    'mbitMore.buttonEventMenu.click': 'クリックされた',
-    'mbitMore.buttonEventMenu.longClick': 'ロングクリックされた',
-    'mbitMore.buttonEventMenu.doubleClick': 'ダブルクリックされた',
-    'mbitMore.isButtonPressed': '[NAME] ボタンがおされている',
-    'mbitMore.whenTouchEvent': 'ピン [NAME] が [EVENT] とき',
-    'mbitMore.isPinTouched': 'ピン [NAME] がタッチされている',
-    'mbitMore.touchIDMenu.logo': 'ロゴ',
-    'mbitMore.touchEventMenu.touched': 'タッチされた',
-    'mbitMore.touchEventMenu.hold': 'ながおしされた',
-    'mbitMore.touchEventMenu.released': 'はなされた',
-    'mbitMore.touchEventMenu.tapped': 'タップされた',
-    'mbitMore.touchEventMenu.longTapped': 'ロングタップされた',
-    'mbitMore.touchEventMenu.doubleTapped': 'ダブルタップされた',
-    'mbitMore.whenGesture': '[GESTURE] とき',
-    'mbitMore.gesturesMenu.tiltUp': 'うえへかたむいた',
-    'mbitMore.gesturesMenu.tiltDown': 'したへかたむいた',
-    'mbitMore.gesturesMenu.tiltLeft': 'ひだりへかたむいた',
-    'mbitMore.gesturesMenu.tiltRight': 'みぎへかたむいた',
-    'mbitMore.gesturesMenu.faceUp': 'おもてになった',
-    'mbitMore.gesturesMenu.faceDown': 'うらになった',
-    'mbitMore.gesturesMenu.freefall': 'おちた',
-    'mbitMore.gesturesMenu.g3': '3Gかかった',
-    'mbitMore.gesturesMenu.g6': '6Gかかった',
-    'mbitMore.gesturesMenu.g8': '8Gかかった',
-    'mbitMore.gesturesMenu.shake': 'ゆさぶられた',
-    'mbitMore.displayMatrix': 'パターン [MATRIX] をひょうじする',
-    'mbitMore.displayText': 'もじ [TEXT] を [DELAY] ミリびょうかんかくでながす',
-    'mbitMore.clearDisplay': 'がめんをけす',
-    'mbitMore.isPinHigh': 'ピン [PIN] がハイである',
-    'mbitMore.lightLevel': 'あかるさ',
-    'mbitMore.temperature': 'おんど',
-    'mbitMore.compassHeading': 'きたからのかくど',
-    'mbitMore.magneticForce': 'じりょく [AXIS]',
-    'mbitMore.acceleration': 'かそくど [AXIS]',
-    'mbitMore.pitch': 'ピッチ',
-    'mbitMore.roll': 'ロール',
-    'mbitMore.soundLevel': 'おとのおおきさ',
-    'mbitMore.analogValue': 'ピン [PIN] のアナログレベル',
-    'mbitMore.setPullMode': 'ピン [PIN] を [MODE] にゅうりょくにする',
-    'mbitMore.setDigitalOut': 'ピン [PIN] をデジタルしゅつりょく [LEVEL] にする',
-    'mbitMore.setAnalogOut': 'ピン [PIN] をアナログしゅつりょく [LEVEL] パーセントにする',
-    'mbitMore.playTone': '[FREQ] ヘルツのおとを [VOL] パーセントの大きさで鳴らす',
-    'mbitMore.stopTone': 'おとをとめる',
-    'mbitMore.setServo': 'ピン [PIN] をサーボ [ANGLE] どにする',
-    'mbitMore.digitalValueMenu.Low': 'ロー',
-    'mbitMore.digitalValueMenu.High': 'ハイ',
-    'mbitMore.axisMenu.x': 'x',
-    'mbitMore.axisMenu.y': 'y',
-    'mbitMore.axisMenu.z': 'z',
-    'mbitMore.axisMenu.absolute': 'おおきさ',
-    'mbitMore.pinModeMenu.pullNone': 'かいほう',
-    'mbitMore.pinModeMenu.pullUp': 'プルアップ',
-    'mbitMore.pinModeMenu.pullDown': 'プルダウン',
-    'mbitMore.listenPinEventType': 'ピン [PIN] で [EVENT_TYPE]',
-    'mbitMore.pinEventTypeMenu.none': 'イベントをうけない',
-    'mbitMore.pinEventTypeMenu.edge': 'エッジイベントをうける',
-    'mbitMore.pinEventTypeMenu.pulse': 'パルスイベントをうける',
-    'mbitMore.pinEventTypeMenu.touch': 'タッチイベントをうける',
-    'mbitMore.whenPinEvent': 'ピン [PIN] で [EVENT] イベントがあがった',
-    'mbitMore.pinEventMenu.rise': 'ライズ',
-    'mbitMore.pinEventMenu.fall': 'フォール',
-    'mbitMore.pinEventMenu.pulseHigh': 'ハイパルス',
-    'mbitMore.pinEventMenu.pulseLow': 'ローパルス',
-    'mbitMore.getPinEventValue': 'ピン [PIN] の [EVENT]',
-    'mbitMore.pinEventTimestampMenu.rise': 'ライズのじかん',
-    'mbitMore.pinEventTimestampMenu.fall': 'フォールのじかん',
-    'mbitMore.pinEventTimestampMenu.pulseHigh': 'ハイパルスのきかん',
-    'mbitMore.pinEventTimestampMenu.pulseLow': 'ローパルスのきかん',
-    'mbitMore.whenDataReceived': 'micro:bit からラベル [LABEL] のデータをうけとったとき',
-    'mbitMore.getDataLabeled': 'ラベル [LABEL] のデータ',
-    'mbitMore.sendData': 'micro:bit へデータ [DATA] にラベル [LABEL] をつけておくる',
-    'mbitMore.connectionStateMenu.connected': 'つながった',
-    'mbitMore.connectionStateMenu.disconnected': 'きれた',
-    'mbitMore.whenConnectionChanged': 'micro:bit と[STATE]とき',
-    'mbitMore.selectCommunicationRoute.connectWith': 'つなぎかた',
-    'mbitMore.selectCommunicationRoute.bluetooth': 'むせん',
-    'mbitMore.selectCommunicationRoute.usb': 'ゆうせん',
-    'mbitMore.selectCommunicationRoute.connect': 'つなぐ',
-    'mbitMore.selectCommunicationRoute.cancel': 'やめる'
-  },
-  'pt-br': {
-    'mbitMore.lightLevel': 'Intensidade da Luz',
-    'mbitMore.compassHeading': 'Está em direção ao Norte',
-    'mbitMore.magneticForce': 'Força Magnética [AXIS]',
-    'mbitMore.acceleration': 'Aceleração no Eixo[AXIS]',
-    'mbitMore.analogValue': 'Ler Pino Analógico [PIN]',
-    'mbitMore.setInput': 'Definir Pino[PIN] como entrada',
-    'mbitMore.setAnalogOut': 'Definir pino PWM[PIN]com[LEVEL]',
-    'mbitMore.setServo': 'Definir Servo no pino [PIN]com ângulo de [ANGLE]॰',
-    'mbitMore.digitalValueMenu.Low': 'desligado',
-    'mbitMore.digitalValueMenu.High': 'ligado'
-  },
-  'pt': {
-    'mbitMore.lightLevel': 'Intensidade da Luz',
-    'mbitMore.compassHeading': 'Está em direção ao Norte',
-    'mbitMore.magneticForce': 'Força Magnética [AXIS]',
-    'mbitMore.acceleration': 'Aceleração no Eixo[AXIS]',
-    'mbitMore.analogValue': 'Ler Pino Analógico [PIN]',
-    'mbitMore.setInput': 'Definir Pino[PIN] como entrada',
-    'mbitMore.setAnalogOut': 'Definir pino PWM[PIN]com[LEVEL]',
-    'mbitMore.setServo': 'Definir Servo no pino [PIN]com ângulo de [ANGLE]॰',
-    'mbitMore.digitalValueMenu.Low': 'desligado',
-    'mbitMore.digitalValueMenu.High': 'ligado'
   }
 };
 var blockClass = MbitMoreBlocks;
