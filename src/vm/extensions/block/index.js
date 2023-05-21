@@ -1880,6 +1880,14 @@ class MbitMoreBlocks {
                 value: MbitMoreButtonName.LOGO
             },
             {
+                text: 'A',
+                value: MbitMoreButtonName.A
+            },
+            {
+                text: 'B',
+                value: MbitMoreButtonName.B
+            },
+            {
                 text: 'P0',
                 value: MbitMoreButtonName.P0
             },
@@ -2933,15 +2941,31 @@ class MbitMoreBlocks {
      */
     isPinTouched (args, util) {
         const buttonName = args.NAME;
-        if (buttonName === MbitMoreButtonName.LOGO) {
-            return this._peripheral.isTouched(buttonName);
+        if (buttonName === MbitMoreButtonName.LOGO || buttonName === MbitMoreButtonName.A || buttonName === MbitMoreButtonName.B) {
+
+            if (buttonName === MbitMoreButtonName.LOGO) {
+                return this._peripheral.isTouched(buttonName);
+            }
+            if (this._peripheral.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
+                return this._peripheral.isTouched(buttonName);
+            }
+            const configPromise = this._peripheral.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
+            if (!configPromise) return; // This thread was yielded.
+            return configPromise.then(() => this._peripheral.isTouched(buttonName));
+
+        } else if (buttonName === MbitMoreButtonName.P0 || buttonName === MbitMoreButtonName.P1 || buttonName === MbitMoreButtonName.P2) {
+            
+            if (buttonName === MbitMoreButtonName.P0 ) {
+                const pinIndex = parseInt(0, 10);
+            } else if (buttonName === MbitMoreButtonName.P1 ) {
+                const pinIndex = parseInt(1, 10);
+            } else if (buttonName === MbitMoreButtonName.P2 ) {
+                const pinIndex = parseInt(2, 10);
+            }
+            const resultPromise = this._peripheral.readAnalogIn(pinIndex, util);
+            if (!resultPromise) return;
+            return resultPromise.then(level => Math.round(level * 100 * 10 / 1024) / 10) >= 90;
         }
-        if (this._peripheral.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
-            return this._peripheral.isTouched(buttonName);
-        }
-        const configPromise = this._peripheral.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
-        if (!configPromise) return; // This thread was yielded.
-        return configPromise.then(() => this._peripheral.isTouched(buttonName));
     }
 
     /**
