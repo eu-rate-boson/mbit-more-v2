@@ -67,7 +67,7 @@ var entry = {
     });
   },
 
-  helpLink: 'https://microbit-more.github.io/',
+  helpLink: 'https://eu-rate-boson.github.io/',
   setFormatMessage: function setFormatMessage(formatter) {
     formatMessage$1 = formatter;
   },
@@ -3934,7 +3934,7 @@ var EXTENSION_ID = 'microbitMore';
  * @type {string}
  */
 
-var extensionURL = 'https://microbit-more.github.io/dist/microbitMore.mjs';
+var extensionURL = 'https://eu-rate-boson.github.io/dist/microbitMore.mjs';
 /**
  * Enum for version of the hardware.
  * @readonly
