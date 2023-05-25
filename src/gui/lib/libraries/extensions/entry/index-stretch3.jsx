@@ -47,7 +47,7 @@ const entry = {
             id: 'gui.extension.microbit.connectingMessage'
         });
     },
-    helpLink: 'https://microbit-more.github.io/',
+    helpLink: 'https://eu-rate-boson.github.io/',
     translationMap: translations
 };
 
