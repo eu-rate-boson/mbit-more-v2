@@ -1,54 +1,65 @@
-import formatMessage from 'format-message';
+import React from 'react';
+import {FormattedMessage} from 'react-intl';
 
 /**
- * EuRate Boson extension
+ * MicroBit More extension
  */
 
-import microbitMoreIconURL from './entry-icon.png';
-import microbitMoreInsetIconURL from './inset-icon.svg';
-import microbitMoreConnectionIconURL from './connection-icon.svg';
-import microbitMoreConnectionSmallIconURL from './connection-small-icon.svg';
-import translations from './translations.json';
+import iconURL from './entry-icon.png';
+import insetIconURL from './inset-icon.svg';
+import connectionIconURL from './connection-icon.svg';
+import connectionSmallIconURL from './connection-small-icon.svg';
 
 const version = 'v2-0.2.5';
+const translations =
+{
+    'en': {
+        'mbitMore.entry.name': 'Boson',
+        'mbitMore.entry.description': `Play with all functions of micro:bit. (${version})`
+    }, 'it': {
+        'mbitMore.entry.name': 'Boson',
+        'mbitMore.entry.description': `Gioca con tutte le funzioni di micro:bit. (${version})`
+    }
+};
 
 const entry = {
-    get name () {
-        return `${formatMessage({
-            defaultMessage: 'Boson',
-            description: 'Name of this extension',
-            id: 'mbitMore.entry.name'
-        })} (${version})`;
-    },
+    name: (
+        <FormattedMessage
+            defaultMessage="Boson"
+            description="Name for this extension"
+            id="mbitMore.entry.name"
+        />
+    ),
     extensionId: 'microbitMore',
-    extensionURL: null,
+    extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
     collaborator: 'Simone Davi',
-    iconURL: microbitMoreIconURL,
-    insetIconURL: microbitMoreInsetIconURL,
-    get description () {
-        return formatMessage({
-            defaultMessage: 'Play with all functions of micro:bit.',
-            description: "Description for the 'EuRate Boson' extension",
-            id: 'mbitMore.entry.description'
-        });
-    },
+    iconURL: iconURL,
+    insetIconURL: insetIconURL,
+    description: (
+        <FormattedMessage
+            defaultMessage="Play with all functions of micro:bit."
+            description="Description for the 'Boson' extension"
+            id="mbitMore.entry.description"
+        />
+    ),
     featured: true,
     disabled: false,
     bluetoothRequired: true,
     internetConnectionRequired: false,
     launchPeripheralConnectionFlow: true,
     useAutoScan: false,
-    connectionIconURL: microbitMoreConnectionIconURL,
-    connectionSmallIconURL: microbitMoreConnectionSmallIconURL,
-    get connectingMessage () {
-        return formatMessage({
-            defaultMessage: 'Connecting',
-            description: 'Message to help people connect to their micro:bit.',
-            id: 'gui.extension.microbit.connectingMessage'
-        });
-    },
+    connectionIconURL: connectionIconURL,
+    connectionSmallIconURL: connectionSmallIconURL,
+    connectingMessage: (
+        <FormattedMessage
+            defaultMessage="Connecting"
+            description="Message to help people connect to their micro:bit."
+            id="gui.extension.microbitMore.description"
+        />
+    ),
     helpLink: 'https://eu-rate-boson.github.io/',
     translationMap: translations
 };
 
+export {entry}; // loadable-extension needs this line.
 export default entry;
