@@ -37,7 +37,7 @@ var entry = {
   },
 
   extensionId: 'microbitMore',
-  extensionURL: 'https://microbit-more.github.io/dist/microbitMore.mjs',
+  extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
   collaborator: 'Yengawa Lab',
   iconURL: img$4,
   insetIconURL: img$3,
