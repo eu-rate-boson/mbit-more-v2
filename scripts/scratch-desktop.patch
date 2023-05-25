@@ -8,8 +8,8 @@ index e52e662..44ff2b6 100644
    output: dist
 -appId: edu.mit.scratch.scratch-desktop
 -productName: "Scratch 3"
-+appId: com.yengawa.mbitmore
-+productName: "MicrobitMore Desktop"
++appId: it.scuoladirobotica.boson
++productName: "Boson Desktop"
  publish: # empty provider list = don't publish
  mac:
    category: public.app-category.education
@@ -18,13 +18,13 @@ index e52e662..44ff2b6 100644
    icon: buildResources/ScratchDesktop.icns
    provisioningProfile: embedded.provisionprofile
 -  artifactName: "Scratch ${version}.${ext}"
-+  artifactName: "MicrobitMore Desktop ${version}.${ext}"
++  artifactName: "Boson Desktop ${version}.${ext}"
    target:
      - dmg
      - mas
  dmg:
 -  title: "Scratch ${version}"
-+  title: "MicrobitMore Desktop ${version}"
++  title: "Boson Desktop ${version}"
  mas:
    category: public.app-category.education
    entitlements: buildResources/entitlements.mas.plist
@@ -36,14 +36,14 @@ index e52e662..44ff2b6 100644
 -  publisherDisplayName: "Scratch Foundation"
 -  publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
 -  artifactName: "Scratch ${version}.${ext}"
-+  identityName: YengawaLab.MicrobitMoreDesktop
-+  publisherDisplayName: "YengawaLab"
-+  publisher: "CN=YENGAWA-LAB"
-+  artifactName: "MicrobitMore Desktop ${version}.${ext}"
++  identityName: scuoladirobotica.Boson
++  publisherDisplayName: "Scuola di Robotica"
++  publisher: "Scuola di robotica"
++  artifactName: "Boson Desktop ${version}.${ext}"
  nsis:
    oneClick: false # allow user to choose per-user or per-machine
 -  artifactName: "Scratch ${version} Setup.${ext}"
-+  artifactName: "MicrobitMore Desktop ${version} Setup.${ext}"
++  artifactName: "Boson Desktop ${version} Setup.${ext}"
 diff --git a/scripts/afterSign.js b/scripts/afterSign.js
 index fbe4fb0..326fe89 100644
 --- a/scripts/afterSign.js
@@ -53,7 +53,7 @@ index fbe4fb0..326fe89 100644
  const notarizeMacBuild = async function (context) {
      // keep this in sync with appId in the electron-builder config
 -    const appId = 'edu.mit.scratch.scratch-desktop';
-+    const appId = 'com.yengawa.mbitmore';
++    const appId = 'it.scuoladirobotica.boson';
  
      if (!process.env.AC_USERNAME) {
          console.error([
