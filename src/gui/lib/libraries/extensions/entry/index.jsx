@@ -1,38 +1,34 @@
 let formatMessage = messageData => messageData.defaultMessage;
 
+/**
+ * MicroBit More extension
+ */
+
 import microbitMoreIconURL from './entry-icon.png';
 import microbitMoreInsetIconURL from './inset-icon.svg';
 import microbitMoreConnectionIconURL from './connection-icon.svg';
 import microbitMoreConnectionSmallIconURL from './connection-small-icon.svg';
+import translations from './translations.json';
 
 const version = 'v2-0.2.5';
-
-const translationMap = {
-    'it': {
-        'gui.extension.microbitMore.description': `Gioca con tutte le funzioni di Microbit. (${version})`
-    },
-    'en': {
-        'gui.extension.microbitMore.description': `Play with all functions of micro:bit. (${version})`
-    }
-};
 
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'Boson',
+            defaultMessage: 'MicroBit More',
             description: 'Name of this extension',
             id: 'mbitMore.entry.name'
         })} (${version})`;
     },
     extensionId: 'microbitMore',
     extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
-    collaborator: 'Simone davi',
+    collaborator: 'Yengawa Lab',
     iconURL: microbitMoreIconURL,
     insetIconURL: microbitMoreInsetIconURL,
     get description () {
         return formatMessage({
             defaultMessage: 'Play with all functions of micro:bit.',
-            description: "Description for the 'Eurate Boson' extension",
+            description: "Description for the 'Microbit More' extension",
             id: 'mbitMore.entry.description'
         });
     },
