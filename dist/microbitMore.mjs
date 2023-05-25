@@ -45,7 +45,7 @@ var entry = {
   get description() {
     return formatMessage$1({
       defaultMessage: 'Play with all functions of micro:bit.',
-      description: "Description for the 'Microbit More' extension",
+      description: "Description for the 'Boson' extension",
       id: 'mbitMore.entry.description'
     });
   },
@@ -5558,77 +5558,77 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.tiltUp',
           default: 'titl up',
-          description: 'label for tilt up gesture in gesture picker for microbit more extension'
+          description: 'label for tilt up gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.TILT_UP
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.tiltDown',
           default: 'titl down',
-          description: 'label for tilt down gesture in gesture picker for microbit more extension'
+          description: 'label for tilt down gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.TILT_DOWN
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.tiltLeft',
           default: 'titl left',
-          description: 'label for tilt left gesture in gesture picker for microbit more extension'
+          description: 'label for tilt left gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.TILT_LEFT
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.tiltRight',
           default: 'titl right',
-          description: 'label for tilt right gesture in gesture picker for microbit more extension'
+          description: 'label for tilt right gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.TILT_RIGHT
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.faceUp',
           default: 'face up',
-          description: 'label for face up gesture in gesture picker for microbit more extension'
+          description: 'label for face up gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.FACE_UP
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.faceDown',
           default: 'face down',
-          description: 'label for face down gesture in gesture picker for microbit more extension'
+          description: 'label for face down gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.FACE_DOWN
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.freefall',
           default: 'freefall',
-          description: 'label for freefall gesture in gesture picker for microbit more extension'
+          description: 'label for freefall gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.FREEFALL
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.g3',
           default: '3G',
-          description: 'label for 3G gesture in gesture picker for microbit more extension'
+          description: 'label for 3G gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.G3
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.g6',
           default: '6G',
-          description: 'label for 6G gesture in gesture picker for microbit more extension'
+          description: 'label for 6G gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.G6
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.g8',
           default: '8G',
-          description: 'label for 3G gesture in gesture picker for microbit more extension'
+          description: 'label for 3G gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.G8
       }, {
         text: formatMessage({
           id: 'mbitMore.gesturesMenu.shake',
           default: 'shake',
-          description: 'label for shaken gesture in gesture picker for microbit more extension'
+          description: 'label for shaken gesture in gesture picker for Boson extension'
         }),
         value: MbitMoreGestureName.SHAKE
       }];
@@ -5644,14 +5644,14 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'mbitMore.buttonIDMenu.a',
           default: 'A',
-          description: 'label for "A" element in button picker for Microbit More extension'
+          description: 'label for "A" element in button picker for Boson extension'
         }),
         value: MbitMoreButtonName.A
       }, {
         text: formatMessage({
           id: 'mbitMore.buttonIDMenu.b',
           default: 'B',
-          description: 'label for "B" element in button picker for Microbit More extension'
+          description: 'label for "B" element in button picker for Boson extension'
         }),
         value: MbitMoreButtonName.B
       }];
@@ -5722,7 +5722,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'mbitMore.touchIDMenu.logo',
           default: 'LOGO',
-          description: 'label for "LOGO" element in touch button picker for Microbit More extension'
+          description: 'label for "LOGO" element in touch button picker for Boson extension'
         }),
         value: MbitMoreButtonName.LOGO
       }, {
@@ -5818,14 +5818,14 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         text: formatMessage({
           id: 'mbitMore.digitalValueMenu.Low',
           default: 'Low',
-          description: 'label for low value in digital output menu for microbit more extension'
+          description: 'label for low value in digital output menu for Boson extension'
         }),
         value: 'false'
       }, {
         text: formatMessage({
           id: 'mbitMore.digitalValueMenu.High',
           default: 'High',
-          description: 'label for high value in digital output menu for microbit more extension'
+          description: 'label for high value in digital output menu for Boson extension'
         }),
         value: 'true'
       }];
@@ -6263,7 +6263,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         },{
           opcode: 'getAnalogValue',
           text: formatMessage({
-            id: 'mbitMore.analogValue',
+            id: 'mbitMore.analogValue', 
             default: 'analog value of pin [PIN]',
             description: 'analog input value of the pin'
           }),
