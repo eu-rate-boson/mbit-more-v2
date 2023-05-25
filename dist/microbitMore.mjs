@@ -7,11 +7,11 @@ var img$2 = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lP
 var img$1 = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMjQyLjAwMDAwMHB0IiBoZWlnaHQ9IjEwMC4wMDAwMDBwdCIgdmlld0JveD0iMCAwIDI0Mi4wMDAwMDAgMTAwLjAwMDAwMCIKIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiPgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMTAwLjAwMDAwMCkgc2NhbGUoMC4xMDAwMDAsLTAuMTAwMDAwKSIKZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIj4KPHBhdGggZD0iTTEzNTEgOTQ2IGMtOSAtMTEgLTggLTE3IDcgLTI4IDEwIC03IDMwIC0zNSA0NSAtNjIgbDI3IC00OCAtMzAgLTM1Ci0zMCAtMzQgMCAtMjU5IDAgLTI2MCAxNDAgMCAxNDAgMCAwIDI1MSBjMCAyNTcgLTIgMjcxIC00MiAzMTUgLTE5IDIyIC0xOSAyMgoxIDYzIDEyIDIyIDMxIDQ5IDQyIDYwIDEzIDEyIDE5IDI2IDE1IDM2IC04IDIyIC0zMSAxNCAtMzIgLTExIDAgLTEwIC0xMyAtNDMKLTI3IC03MSBsLTI3IC01MyAtNzAgMCAtNjkgMCAtMjcgNDYgYy0xNSAyNiAtMjkgNTYgLTMwIDY4IC0xIDEyIC0zIDI0IC0zIDI5Ci0yIDEyIC0xOCA4IC0zMCAtN3ogbTIzIC0xNyBjLTMgLTUgLTEwIC03IC0xNSAtMyAtNSAzIC03IDEwIC0zIDE1IDMgNSAxMCA3CjE1IDMgNSAtMyA3IC0xMCAzIC0xNXogbTI4NiA1IGMwIC04IC01IC0xMiAtMTAgLTkgLTYgNCAtOCAxMSAtNSAxNiA5IDE0IDE1CjExIDE1IC03eiBtLTg4IC0yMDEgYzI1IC0yMyAyNyAtMTU2IDIgLTE0NiAtMjQgOSAtNDQgLTIzIC00NCAtNjggMCAtNDAgMjQKLTc0IDQ2IC02NSAxMSA0IDE0IC0xNiAxNCAtMTA0IGwwIC0xMTAgLTgwIDAgLTgwIDAgMCAxMTEgYzAgNzUgMyAxMDggMTEgMTA0CjUgLTQgMTkgMSAzMCAxMSAzNiAzMiAxNiAxMjQgLTI4IDEyNCAtMjAgMCAtMTggMTE4IDQgMTQyIDIxIDI0IDk5IDI1IDEyNSAxegptLTEwMCAtMTg4IGMxMyAtMzAgLTMgLTc1IC0yNyAtNzUgLTE4IDAgLTI5IDQxIC0yMSA3NSA0IDE0IDEzIDI1IDIxIDI1IDkgMAoyMSAtMTEgMjcgLTI1eiBtMTIwIDAgYzEzIC0zMCAtMyAtNzUgLTI3IC03NSAtMTggMCAtMjkgNDEgLTIxIDc1IDQgMTQgMTMgMjUKMjEgMjUgOSAwIDIxIC0xMSAyNyAtMjV6Ii8+CjxwYXRoIGQ9Ik0xNDc1IDM1MCBsMjkgLTMwIDI4IDI3IGMxNSAxNCAyNiAyOSAyMyAzMSAtMyAzIC0xNiAtNCAtMjggLTE2CmwtMjQgLTIyIC0xOCAyMCBjLTEwIDExIC0yMyAyMCAtMjggMjAgLTYgMCAyIC0xNCAxOCAtMzB6Ii8+CjxwYXRoIGQ9Ik03MCA1MjAgbDAgLTI5MCAxMjAgMCBjMTI1IDAgMTI1IDAgMTMyIDQ1IDMgMTkgLTMgMjAgLTk0IDIzIGwtOTggMwowIDk0IDAgOTUgODQgMCBjNzggMCA4NCAxIDkwIDIzIDMgMTIgNiAyNSA2IDMwIDAgNCAtNDAgNyAtOTAgNyBsLTkwIDAgMCA5NQowIDk1IDg1IDAgYzgzIDAgODYgMSA5NSAyNiA2IDE0IDEwIDMwIDEwIDM1IDAgNSAtNTQgOSAtMTI1IDkgbC0xMjUgMCAwIC0yOTB6Ii8+CjxwYXRoIGQ9Ik00MTAgNTU1IGwwIC0yNTcgMzQgLTM0IGMzMSAtMzEgMzkgLTM0IDk1IC0zNCAzNiAwIDc0IDYgOTEgMTUgNTYKMjkgNjAgNDkgNjAgMzIwIGwwIDI0NSAtMzAgMCAtMzAgMCAwIC0yMzggYzAgLTI3OSAtMSAtMjgyIC03OSAtMjgyIC04MCAwCi04MCAtMSAtODMgMjc2IGwtMyAyMzkgLTI3IDMgLTI4IDMgMCAtMjU2eiIvPgo8cGF0aCBkPSJNMTAwMiA1MjMgbDMgLTI4OCAyNyAtMyAyNyAtMyAzIDEyMyAzIDEyMyA1NyAzIGM1MSAzIDYxIDAgODMgLTIyCjIzIC0yMyAyNSAtMzIgMjUgLTEyNiBsMCAtMTAxIDI4IDMgMjcgMyAwIDExMSBjMCA5NiAtMyAxMTUgLTE5IDEzMyAtMTkgMjEKLTE5IDIyIDMgNjIgMjAgMzQgMjMgNTIgMTkgMTE0IC02IDEyNCAtNDQgMTUzIC0yMDEgMTU0IGwtODcgMSAyIC0yODd6IG0yMDkKMjAwIGM5IC0xMCAxNCAtNDEgMTQgLTg1IDAgLTg3IC0xMiAtOTggLTEwMiAtOTggbC02MyAwIDAgMTAwIDAgMTAwIDY5IDAgYzUyCjAgNzIgLTQgODIgLTE3eiIvPgo8cGF0aCBkPSJNMTczMCA3NzUgbDAgLTM1IDU1IDAgNTUgMCAyIC0yNTIgMyAtMjUzIDI4IC0zIDI3IC0zIDAgMjU1IDAgMjU1CjUzIDMgYzUxIDMgNTIgNCA1NSAzNiBsMyAzMiAtMTQwIDAgLTE0MSAwIDAgLTM1eiIvPgo8cGF0aCBkPSJNMjA5NSA3OTcgYy0zIC03IC00IC0xMzYgLTMgLTI4NyBsMyAtMjc1IDExOSAtMyBjMTI3IC0zIDEzNiAwIDEzNgo0NiAwIDIxIC0zIDIyIC05NSAyMiBsLTk1IDAgMCA5NSAwIDk1IDg1IDAgYzY3IDAgODUgMyA4NSAxNCAwIDggMyAyMSA2IDMwIDUKMTQgLTYgMTYgLTg1IDE2IGwtOTEgMCAwIDk1IDAgOTQgODggMyA4NyAzIDMgMzMgMyAzMiAtMTIxIDAgYy04OCAwIC0xMjIgLTMKLTEyNSAtMTN6Ii8+CjxwYXRoIGQ9Ik03NzAgNDYwIGwwIC0zMCA3NSAwIDc1IDAgMCAzMCAwIDMwIC03NSAwIC03NSAwIDAgLTMweiIvPgo8cGF0aCBkPSJNMTM5NSAxOTAgYzQgLTYgNTMgLTEwIDExNiAtMTAgNjYgMCAxMDkgNCAxMDkgMTAgMCA2IC00NSAxMCAtMTE2CjEwIC03NCAwIC0xMTMgLTQgLTEwOSAtMTB6Ii8+CjxwYXRoIGQ9Ik0xNDY4IDE1MyBjMjMgLTIgNjEgLTIgODUgMCAyMyAyIDQgNCAtNDMgNCAtNDcgMCAtNjYgLTIgLTQyIC00eiIvPgo8cGF0aCBkPSJNNzAgMTAwIGwwIC0zMCAxMTM1IDAgYzk3MyAwIDExMzUgMiAxMTM1IDE0IDAgOCAzIDIxIDYgMzAgNiAxNSAtOTkKMTYgLTExMzUgMTYgbC0xMTQxIDAgMCAtMzB6Ii8+CjwvZz4KPC9zdmc+Cg==";
 
 var en = {
-	"mbitMore.entry.name": "MicroBit More",
+	"mbitMore.entry.name": "Boson",
 	"mbitMore.entry.description": "Play with all functions of micro:bit."
 };
 var ja$1 = {
-	"mbitMore.entry.name": "MicroBit More",
+	"mbitMore.entry.name": "Boson",
 	"mbitMore.entry.description": "micro:bitのすべての機能で遊ぶ。"
 };
 var translations$1 = {
@@ -30,7 +30,7 @@ var version = 'v2-0.2.5';
 var entry = {
   get name() {
     return "".concat(formatMessage$1({
-      defaultMessage: 'MicroBit More',
+      defaultMessage: 'Boson',
       description: 'Name of this extension',
       id: 'mbitMore.entry.name'
     }), " (").concat(version, ")");
@@ -1383,7 +1383,7 @@ var log$2 = minilog('vm');
 var img = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMjA2My4wMDAwMDBwdCIgaGVpZ2h0PSI4NTMuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCAyMDYzLjAwMDAwMCA4NTMuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+Cgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCw4NTMuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApIgpmaWxsPSIjMDAwMDAwIiBzdHJva2U9Im5vbmUiPgo8cGF0aCBkPSJNMTE1NjUgODE0MyBjLTQ2IC0yNCAtNjYgLTQ1IC04NiAtODggLTQ3IC0xMDMgMTEgLTIyNSAxMjIgLTI1NSAyMwotNiA1MyAtOSA2NyAtNiAyNiA2IDMzIC01IDI4NSAtNDcyIDE0MSAtMjYzIDI1NyAtNDgxIDI1NyAtNDg0IDAgLTMgLTIxIC0xOQotNDcgLTM0IC0yODUgLTE2NSAtNDc4IC00NjggLTUxMyAtODA1IC02IC02NiAtMTAgLTc5MCAtMTAgLTIxMDUgbDAgLTIwMDQKMTIwOSAwIDEyMDggMCAxMiA3MyBjOSA1NSAxMSA1NTcgOSAyMDk3IGwtNCAyMDI1IC0yMSA3NSBjLTYzIDIxNCAtMTUzIDM2MwotMzA4IDUwOCAtNDIgMzkgLTExMCA5MiAtMTUxIDExOCAtNDEgMjUgLTc0IDQ4IC03NCA1MSAwIDMgMTE2IDIyMSAyNTggNDg0CjI1MiA0NzAgMjU4IDQ3OSAyODQgNDc0IDQ0IC0xMCAxMDkgMTQgMTQ5IDU0IDEyMyAxMjMgMjggMzIzIC0xNDYgMzA5IC0xNDgKLTEyIC0yMTMgLTE3NyAtMTIxIC0zMDMgMTQgLTE5IC00IC01NSAtMjQ0IC01MDAgLTE0OCAtMjc1IC0yNjUgLTQ3OSAtMjcyCi00NzkgLTcgMSAtNTMgMTQgLTEwMyAyOCAtMTMzIDM5IC0yNTYgNDkgLTUzNSA0MyAtMjUxIC02IC0zMTEgLTE0IC00MzQgLTU3Ci0zMyAtMTEgLTYzIC0xNyAtNjYgLTEzIC03IDcgLTQ2NiA4NTUgLTUwNCA5MzAgLTE1IDMxIC0xNSAzMyA5IDY5IDYyIDkxIDM1CjIwNyAtNjAgMjYxIC00OCAyNyAtMTI1IDMwIC0xNzAgNnogbTEyNSAtNzggYzM3IC0xOSA1MCAtNDMgNTAgLTkzIDAgLTgwIC05NQotMTIwIC0xNTggLTY3IC01MyA0NCAtNDcgMTIwIDEyIDE1NiAzOCAyMyA1OCAyNCA5NiA0eiBtMjQ0MCAwIGM4OSAtNDYgNTQKLTE4NSAtNDcgLTE4NSAtOTAgMSAtMTM1IDEwOCAtNzAgMTY3IDM5IDM2IDczIDQxIDExNyAxOHogbS05OTAgLTE2NTUgYzE3MgotMzMgMzI1IC0xNjcgMzg5IC0zNDMgbDI2IC03MiAzIC01MTcgYzIgLTI4NSAyIC01MTggMCAtNTE4IC0yIDAgLTMwIDE0IC02MgozMCAtMTY4IDg1IC0zNDUgLTE2IC00MzIgLTI0NyAtMTMzIC0zNTAgLTMgLTgwNiAyNTAgLTg3NCA1OCAtMTYgMTM5IC01IDE5MwoyNSAyNSAxNCA0NyAyNiA0OSAyNiAyIDAgNCAtNDI3IDQgLTk1MCBsMCAtOTUwIC02OTUgMCAtNjk1IDAgMCA5NTUgMCA5NTQgMzYKLTI0IGMxMDYgLTcyIDIyNyAtNTcgMzMzIDQxIDY4IDYzIDExMCAxMzYgMTQ3IDI1OSAyMyA3OSAyNyAxMDggMjcgMjMwIDEgMTU4Ci0xMyAyMzIgLTY4IDM1MiAtMzggODIgLTExOCAxNzQgLTE4MCAyMDUgLTIyIDEyIC02NyAyMyAtMTAxIDI2IC02MSA0IC03NyAwCi0xODYgLTU2IC0xMiAtNiAtMTAgOTc3IDIgMTAzOSAzNiAxODggMTkxIDM1MiAzODIgNDAzIDY0IDE4IDQ5NSAyMiA1NzggNnoKbS03MzIgLTE1MzQgYzEwOSAtNTcgMTc2IC0yMjMgMTc2IC00MzYgMCAtMTc1IC0zNiAtMjk0IC0xMTUgLTM4NSAtMTI2IC0xNDMKLTI4OSAtMzYgLTM0NCAyMjYgLTcwIDMzMiAxMDEgNjkwIDI4MyA1OTV6IG0xMDMwIDAgYzE3MiAtOTEgMjM3IC00NzcgMTIyCi03MjUgLTY3IC0xNDIgLTE2MSAtMTk0IC0yNTIgLTEzOCAtMTY2IDEwMCAtMjIyIDQ4MiAtMTA3IDcyNSAzMSA2NCA4NSAxMjcKMTIzIDE0MiAzMyAxMyA4NCAxMiAxMTQgLTR6Ii8+CjxwYXRoIGQ9Ik0xMjQwMCAzMjQ1IGwtNDUgLTQ1IDIzOCAtMjM4IDIzNyAtMjM3IDIzMCAyMzAgMjMwIDIzMCAtMzYgNTQgLTM2CjU0IC0xOTQgLTE5NCAtMTk0IC0xOTQgLTE5MyAxOTMgLTE5MyAxOTIgLTQ0IC00NXoiLz4KPHBhdGggZD0iTTU2MiA0NDQzIGwzIC0yNDM4IDEwNTQgLTMgYzU4MCAtMSAxMDU5IDIgMTA2MyA2IDcgNyAxMDggNDg5IDEwOAo1MTQgMCA0IC0zODIgOCAtODUwIDggbC04NTAgMCAwIDgyMCAwIDgyMCA3MjQgMCBjNDQ4IDAgNzI3IDQgNzMxIDEwIDUgOCAxMDUKNDk0IDEwNSA1MTIgMCA0IC0zNTEgOCAtNzgwIDggbC03ODAgMCAwIDgyNSAwIDgyNSA3NjQgMCA3NjMgMCA1MiAyNTggYzI4CjE0MSA1MSAyNjAgNTEgMjY1IDAgNCAtNDg2IDcgLTEwODAgNyBsLTEwODAgMCAyIC0yNDM3eiIvPgo8cGF0aCBkPSJNMzQ1NCA2ODY3IGMtMiAtNyAtMyAtOTE1IC0xIC0yMDE3IDMgLTIyMzQgLTMgLTIwNDQgNzEgLTIyNDIgNTQKLTE0NCAxMTcgLTIzOSAyNDEgLTM2MyAxNTcgLTE1NyAzMTQgLTI0NCA1MjUgLTI5MCA5OCAtMjEgNDk0IC0zMiA2NDAgLTE3CjE5MCAyMCAzNTAgNzUgNDkzIDE2OCA4NiA1NyAyMzkgMjA3IDI4OSAyODUgODIgMTI1IDE0NiAyODUgMTY4IDQyMSA2IDQxIDEwCjc1MiAxMCAyMDY2IGwwIDIwMDIgLTI2MCAwIC0yNjAgMCAtMiAtMjAwMiAtMyAtMjAwMyAtMjMgLTU5IGMtNjcgLTE3NyAtMjAyCi0zMDAgLTM3MyAtMzQxIC05MSAtMjEgLTQ5NyAtMjEgLTU4OCAwIC0xODggNDUgLTM0MSAxOTggLTM4NiAzODcgLTEzIDU0IC0xNQozMzIgLTE1IDIwNDEgbDAgMTk3NyAtMjYwIDAgYy0yMDQgMCAtMjYyIC0zIC0yNjYgLTEzeiIvPgo8cGF0aCBkPSJNODU0NSA2ODY4IGMtMyAtNyAtNCAtMTEwNCAtMyAtMjQzOCBsMyAtMjQyNSAyNjAgMCAyNjAgMCAzIDEwMzMgMgoxMDMyIDQ2NSAwIGMzMDYgMCA0ODIgLTQgNTE3IC0xMSAxNzAgLTM2IDMxMiAtMTY2IDM3NyAtMzQzIGwyNiAtNzEgMyAtODIyIDMKLTgyMyAyNjAgMCAyNjAgMCAtMyA4NTMgYy0zIDg1MCAtMyA4NTIgLTI2IDkzMiAtNTAgMTc3IC0xNjYgMzY0IC0zMDUgNDg5CmwtNzEgNjUgMjkgMjIgYzUzIDM5IDE2MyAxNTcgMjA1IDIxOCA3OSAxMTcgMTM3IDI1NiAxNTkgMzg1IDcgMzYgMTEgMjQyIDExCjUxNyAwIDM2NiAtMyA0NzMgLTE1IDUzNiAtNDMgMjI3IC0xNDkgNDIwIC0zMTUgNTc3IC0xMzIgMTI0IC0yNzMgMjAxIC00NjkKMjU0IGwtOTYgMjYgLTc2OCA0IGMtNjIzIDIgLTc2OCAxIC03NzIgLTEweiBtMTUyMCAtNTMzIGMxNDYgLTM4IDI2NiAtMTM4CjMzNCAtMjc2IDU5IC0xMjEgNjMgLTE2NCA1OSAtNjMxIC00IC0zNTUgLTYgLTQxMCAtMjIgLTQ1OCAtNDkgLTE0OSAtMTQwCi0yNTYgLTI3NCAtMzIzIGwtODUgLTQyIC01MDQgLTMgLTUwMyAtMyAwIDg3NiAwIDg3NSA0NjggMCBjMzg4IDAgNDc4IC0zIDUyNwotMTV6Ii8+CjxwYXRoIGQ9Ik0xNDc1MCA2NjE1IGwwIC0yNjUgNDY1IDAgNDY1IDAgMiAtMjE3MiAzIC0yMTczIDI2MyAtMyAyNjIgLTIgMAoyMTc1IDAgMjE3NSA0MzUgMCBjMjM5IDAgNDM1IDEgNDM1IDMgMCAyIDIzIDExNSA1MCAyNTIgMjggMTM3IDUwIDI1NSA1MCAyNjIKMCAxMSAtMjIyIDEzIC0xMjE1IDEzIGwtMTIxNSAwIDAgLTI2NXoiLz4KPHBhdGggZD0iTTE3ODUwIDQ0NDAgbDAgLTI0NDAgMTA2MCAwIDEwNjAgMCA1IDIzIGMzIDEyIDI3IDEzMSA1NCAyNjQgbDQ4CjI0MyAtODUzIDAgLTg1NCAwIDAgODIwIDAgODIwIDczMCAwIDczMCAwIDUgMjMgYzMgMTIgMjcgMTMxIDU0IDI2NSBsNDggMjQyCi03ODMgMCAtNzg0IDAgMCA4MjUgMCA4MjUgNzY1IDAgNzY1IDAgNSAyMyBjMTYgNjggOTUgNDc0IDk1IDQ4OSAwIDE3IC00NCAxOAotMTA3NSAxOCBsLTEwNzUgMCAwIC0yNDQweiIvPgo8cGF0aCBkPSJNNjU2MCAzOTE1IGwwIC0yNjUgNjYwIDAgNjYwIDAgMCAyNjUgMCAyNjUgLTY2MCAwIC02NjAgMCAwIC0yNjV6Ii8+CjxwYXRoIGQ9Ik0xMTg4MCAxNjQwIGwwIC03MCA5NjUgMCA5NjUgMCA5IDIzIGM1IDEzIDEyIDQ1IDE2IDcwIGw3IDQ3IC05ODEgMAotOTgxIDAgMCAtNzB6Ii8+CjxwYXRoIGQ9Ik0xMjE2NyAxMzkzIGMtNCAtMyAtNyAtMzUgLTcgLTcwIGwwIC02MyA2ODUgMCA2ODQgMCAxMCAzOCBjNSAyMCAxMgo1MiAxNiA3MCBsNyAzMiAtNjk1IDAgYy0zODEgMCAtNjk3IC0zIC03MDAgLTd6Ii8+CjxwYXRoIGQ9Ik01NjAgODIwIGwwIC0yNjAgOTY4MCAwIDk2ODAgMCA1IDIzIGMxMyA1NSA5NSA0NzIgOTUgNDg0IDAgMTEKLTE3MDQgMTMgLTk3MzAgMTMgbC05NzMwIDAgMCAtMjYweiIvPgo8L2c+Cjwvc3ZnPgo=";
 
 var ja = {
-	"mbitMore.name": "MicroBit More",
+	"mbitMore.name": "Boson",
 	"mbitMore.whenButtonEvent": "ボタン [NAME] が [EVENT] とき",
 	"mbitMore.buttonIDMenu.a": "A",
 	"mbitMore.buttonIDMenu.b": "B",
@@ -1471,7 +1471,7 @@ var ja = {
 	"mbitMore.selectCommunicationRoute.cancel": "やめる"
 };
 var pt = {
-	"mbitMore.name": "MicroBit More",
+	"mbitMore.name": "Boson",
 	"mbitMore.lightLevel": "Intensidade da Luz",
 	"mbitMore.compassHeading": "Está em direção ao Norte",
 	"mbitMore.magneticForce": "Força Magnética [AXIS]",
@@ -1486,7 +1486,7 @@ var pt = {
 var translations = {
 	ja: ja,
 	"ja-Hira": {
-	"mbitMore.name": "MicroBit More",
+	"mbitMore.name": "Boson",
 	"mbitMore.whenButtonEvent": "[NAME] ボタンが [EVENT] とき",
 	"mbitMore.buttonIDMenu.a": "A",
 	"mbitMore.buttonIDMenu.b": "B",
@@ -1574,7 +1574,7 @@ var translations = {
 	"mbitMore.selectCommunicationRoute.cancel": "やめる"
 },
 	"pt-br": {
-	"mbitMore.name": "MicroBit More",
+	"mbitMore.name": "Boson",
 	"mbitMore.lightLevel": "Intensidade da Luz",
 	"mbitMore.compassHeading": "Está em direção ao Norte",
 	"mbitMore.magneticForce": "Força Magnética [AXIS]",
@@ -4925,7 +4925,7 @@ var MbitMore = /*#__PURE__*/function () {
       return this.magneticForce[axis];
     }
     /**
-     * Start to scan Bluetooth LE devices to find micro:bit with MicroBit More service.
+     * Start to scan Bluetooth LE devices to find micro:bit with Boson service.
      */
 
   }, {
@@ -6020,6 +6020,20 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
         value: 'disconnected'
       }];
     }
+  },{
+    key: "IMPLEMENTATIONS_MENU ",
+    get: function get() {
+        return [
+            {
+                text: formatMessage({
+                    id: 'mbitMore.implementationsMenu.neopixel',
+                    default: 'NeoPixel LEDs',
+                    description: 'label for NeoPixel LEDs'
+                }),
+                value: 'neopixel'
+            }
+        ];
+    }
   }, {
     key: "getInfo",
     value: function getInfo() {
@@ -6229,8 +6243,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             AXIS: {
               type: argumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.Absolute
+              menu: 'axis'
             }
           }
         }, {
@@ -6244,11 +6257,10 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             AXIS: {
               type: argumentType.STRING,
-              menu: 'axis',
-              defaultValue: AxisSymbol.X
+              menu: 'axis'
             }
           }
-        }, '---', {
+        },{
           opcode: 'getAnalogValue',
           text: formatMessage({
             id: 'mbitMore.analogValue',
@@ -6259,11 +6271,10 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           arguments: {
             PIN: {
               type: argumentType.STRING,
-              menu: 'analogInPins',
-              defaultValue: '0'
+              menu: 'analogInPins'
             }
           }
-        }, {
+        }, '---',  {
           opcode: 'setPullMode',
           text: formatMessage({
             id: 'mbitMore.setPullMode',
@@ -6496,6 +6507,23 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: 'data'
             }
           }
+        },
+        '---',
+        {
+            opcode: 'redirectImplementation',
+            text: formatMessage({
+                id:'mbitMore.redirectImplementation',
+                default: 'To use [IMPLEMENTATION] click here',
+                description: 'To use the NeoPixel led strip click here'
+            }),
+            blockType: BlockType.REPORTER,
+            arguments: {
+                IMPLEMENTATION: {
+                    type: ArgumentType.STRING,
+                    menu: 'implementationsMenu',
+                    defaultValue: 'neopixel'
+                }
+            }
         }],
         menus: {
           buttonIDMenu: {
@@ -6553,6 +6581,10 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           connectionStateMenu: {
             acceptReporters: false,
             items: this.CONNECTION_STATE_MENU
+          },
+          implementationsMenu: {
+              acceptReporters: false,
+              items: this.IMPLEMENTATIONS_MENU
           }
         },
         translationMap: translations
@@ -7321,6 +7353,17 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      */
 
   }, {
+    key: "redirectImplementation ",
+    value: function redirectImplementation(args) {
+        window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
+        return "NeoPixel with MicroBit";
+    }
+    /**
+     * Redirect to implementations.
+     * @param {object} args - the block's arguments.
+     * @return {string} string.
+     */
+  }, {
     key: "whenConnectionChanged",
     value: function whenConnectionChanged(args) {
       var state = args.STATE === 'connected';
@@ -7346,7 +7389,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
     get: function get() {
       return formatMessage({
         id: 'mbitMore.name',
-        default: 'MicroBit More',
+        default: 'Boson',
         description: 'name of the extension'
       });
     }
