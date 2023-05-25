@@ -842,7 +842,7 @@ class MbitMore {
     }
 
     /**
-     * Configurate microphone.
+     * Configure microphone.
      * @param {boolean} use - true to use microphone.
      * @param {object} util - utility object provided by the runtime.
      * @return {?Promise} - a Promise that resolves state of the microphone or undefined if the process was yield.
@@ -1084,100 +1084,6 @@ class MbitMore {
     }
 
     /**
-     * Open dialog to selector communication route [BLE | USB Serial]
-     */
-    selectCommunicationRoute () {
-        const selectDialog = document.createElement('dialog');
-        selectDialog.style.padding = '0px';
-        const dialogFace = document.createElement('div');
-        dialogFace.style.padding = '16px';
-        selectDialog.appendChild(dialogFace);
-        const label = document.createTextNode(formatMessage({
-            id: 'mbitMore.selectCommunicationRoute.connectWith',
-            default: 'Connect with',
-            description: 'label of select communication route dialog for microbit more extension'
-        }));
-        dialogFace.appendChild(label);
-        // Dialog form
-        const selectForm = document.createElement('form');
-        selectForm.setAttribute('method', 'dialog');
-        selectForm.style.margin = '8px';
-        dialogFace.appendChild(selectForm);
-        // API select
-        const apiSelect = document.createElement('select');
-        apiSelect.setAttribute('id', 'api');
-        selectForm.appendChild(apiSelect);
-        // BLE option
-        const bleOption = document.createElement('option');
-        bleOption.setAttribute('value', 'ble');
-        bleOption.textContent = formatMessage({
-            id: 'mbitMore.selectCommunicationRoute.bluetooth',
-            default: 'Bluetooth',
-            description: 'bluetooth button on select communication route dialog for microbit more extension'
-        });
-        apiSelect.appendChild(bleOption);
-        // USB option
-        const usbOption = document.createElement('option');
-        usbOption.setAttribute('value', 'usb');
-        usbOption.textContent = formatMessage({
-            id: 'mbitMore.selectCommunicationRoute.usb',
-            default: 'USB',
-            description: 'usb button on select communication route dialog for microbit more extension'
-        });
-        apiSelect.appendChild(usbOption);
-        // Cancel button
-        const cancelButton = document.createElement('button');
-        cancelButton.textContent = formatMessage({
-            id: 'mbitMore.selectCommunicationRoute.cancel',
-            default: 'cancel',
-            description: 'cancel button on select communication route dialog for microbit more extension'
-        });
-        cancelButton.style.margin = '8px';
-        dialogFace.appendChild(cancelButton);
-        // OK button
-        const confirmButton = document.createElement('button');
-        confirmButton.textContent = formatMessage({
-            id: 'mbitMore.selectCommunicationRoute.connect',
-            default: 'connect',
-            description: 'connect button on select communication route dialog for microbit more extension'
-        });
-        confirmButton.style.margin = '8px';
-        dialogFace.appendChild(confirmButton);
-        // Add onClick action
-        const selectProcess = () => {
-            if (apiSelect.value === 'ble') {
-                this.scanBLE();
-            }
-            if (apiSelect.value === 'usb') {
-                this.scanSerial();
-            }
-            document.body.removeChild(selectDialog);
-        };
-        cancelButton.onclick = () => {
-            document.body.removeChild(selectDialog);
-            this.runtime.emit(this.runtime.constructor.PERIPHERAL_REQUEST_ERROR, {
-                message: `Scan was canceled by user`,
-                extensionId: this._extensionId
-            });
-        };
-        confirmButton.onclick = selectProcess;
-        selectDialog.addEventListener('keydown', e => {
-            if (e.code === 'Enter') {
-                selectProcess();
-            }
-        });
-        // Close when click outside of the dialog
-        // selectDialog.onclick = e => {
-        //     if (!e.target.closest('div')) {
-        //         e.target.close();
-        //         selectProcess();
-        //     }
-        // };
-        document.body.appendChild(selectDialog);
-        selectDialog.showModal();
-    }
-
-    /**
      * Whether the key is pressed at this moment.
      * @param {string} key - key in keyboard event
      * @returns {boolean} - return true when the key is pressed
@@ -1195,10 +1101,12 @@ class MbitMore {
         }
         this.bleBusy = true;
         if (('serial' in navigator) && this.isKeyPressing('Shift')) {
-            this.selectCommunicationRoute();
+            this.scanSerial();
         } else {
             this.scanBLE();
         }
+        // The key state is cleared because the keyup event will be dropped by the browser dialog.
+        this.keyState = {};
     }
 
     /**
@@ -1880,14 +1788,6 @@ class MbitMoreBlocks {
                 value: MbitMoreButtonName.LOGO
             },
             {
-                text: 'A',
-                value: MbitMoreButtonName.A
-            },
-            {
-                text: 'B',
-                value: MbitMoreButtonName.B
-            },
-            {
                 text: 'P0',
                 value: MbitMoreButtonName.P0
             },
@@ -2205,7 +2105,10 @@ class MbitMoreBlocks {
             }
         ];
     }
-    
+
+    /**
+     * @return {array} - Menu items for Implementatuions menu.
+     */
     get IMPLEMENTATIONS_MENU () {
         return [
             {
@@ -2492,7 +2395,8 @@ class MbitMoreBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis'
+                            menu: 'axis',
+                            defaultValue: AxisSymbol.Absolute
                         }
                     }
                 },
@@ -2507,10 +2411,12 @@ class MbitMoreBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis'
+                            menu: 'axis',
+                            defaultValue: AxisSymbol.X
                         }
                     }
                 },
+                '---',
                 {
                     opcode: 'getAnalogValue',
                     text: formatMessage({
@@ -2522,7 +2428,8 @@ class MbitMoreBlocks {
                     arguments: {
                         PIN: {
                             type: ArgumentType.STRING,
-                            menu: 'analogInPins'
+                            menu: 'analogInPins',
+                            defaultValue: '0'
                         }
                     }
                 },
@@ -2570,7 +2477,7 @@ class MbitMoreBlocks {
                     text: formatMessage({
                         id: 'mbitMore.setDigitalOut',
                         default: 'set [PIN] Digital [LEVEL]',
-                        description: 'set pin to Digtal Output mode and the level(true = High)'
+                        description: 'set pin to Digital Output mode and the level(High = true)'
                     }),
                     blockType: BlockType.COMMAND,
                     arguments: {
@@ -2732,9 +2639,8 @@ class MbitMoreBlocks {
                     opcode: 'whenDataReceived',
                     text: formatMessage({
                         id: 'mbitMore.whenDataReceived',
-                        default: 'when data with loabel [LABEL] received from micro:bit',
+                        default: 'when data with label [LABEL] received from micro:bit',
                         description: 'when the data which has the label received'
-
                     }),
                     blockType: BlockType.HAT,
                     arguments: {
@@ -2941,31 +2847,15 @@ class MbitMoreBlocks {
      */
     isPinTouched (args, util) {
         const buttonName = args.NAME;
-        if (buttonName === MbitMoreButtonName.LOGO || buttonName === MbitMoreButtonName.A || buttonName === MbitMoreButtonName.B) {
-
-            if (buttonName === MbitMoreButtonName.LOGO) {
-                return this._peripheral.isTouched(buttonName);
-            }
-            if (this._peripheral.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
-                return this._peripheral.isTouched(buttonName);
-            }
-            const configPromise = this._peripheral.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
-            if (!configPromise) return; // This thread was yielded.
-            return configPromise.then(() => this._peripheral.isTouched(buttonName));
-
-        } else if (buttonName === MbitMoreButtonName.P0 || buttonName === MbitMoreButtonName.P1 || buttonName === MbitMoreButtonName.P2) {
-            
-            if (buttonName === MbitMoreButtonName.P0 ) {
-                const pinIndex = parseInt(0, 10);
-            } else if (buttonName === MbitMoreButtonName.P1 ) {
-                const pinIndex = parseInt(1, 10);
-            } else if (buttonName === MbitMoreButtonName.P2 ) {
-                const pinIndex = parseInt(2, 10);
-            }
-            const resultPromise = this._peripheral.readAnalogIn(pinIndex, util);
-            if (!resultPromise) return;
-            return resultPromise.then(level => Math.round(level * 100 * 10 / 1024) / 10) >= 90;
+        if (buttonName === MbitMoreButtonName.LOGO) {
+            return this._peripheral.isTouched(buttonName);
         }
+        if (this._peripheral.isPinTouchMode(MbitMoreButtonPinIndex[buttonName])) {
+            return this._peripheral.isTouched(buttonName);
+        }
+        const configPromise = this._peripheral.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
+        if (!configPromise) return; // This thread was yielded.
+        return configPromise.then(() => this._peripheral.isTouched(buttonName));
     }
 
     /**
@@ -3008,7 +2898,7 @@ class MbitMoreBlocks {
      */
     displayMatrix (args, util) {
         const matrixString = Cast.toString(args.MATRIX)
-            .replace(/！-～/g, ws => String.fromCharCode(ws.charCodeAt(0) - 0xFEE0)); // zenkaku to hankaku
+            .replace(/[０-９，]/g, ws => String.fromCharCode(ws.charCodeAt(0) - 0xFEE0)); // zenkaku to hankaku
         let matrixData;
         if (matrixString.includes(',')) {
             // comma separated values
@@ -3051,10 +2941,16 @@ class MbitMoreBlocks {
      * 1px before the string, and 5px after the string.
      */
     displayText (args, util) {
-        const text = String(args.TEXT)
-            .replace(/！-～/g, zenkaku =>
-                String.fromCharCode(zenkaku.charCodeAt(0) - 0xFEE0)) // zenkaku to hankaku
-            .replace(/[^ -~]/g, '?');
+        // zenkaku to hankaku
+        const text = Cast.toString(args.TEXT)
+            .replace(/[Ａ-Ｚａ-ｚ０-９！-～]/g, ws => String.fromCharCode(ws.charCodeAt(0) - 0xFEE0))
+            .replace(/”/g, '"')
+            .replace(/’/g, "'")
+            .replace(/‘/g, '`')
+            .replace(/￥/g, '\\')
+            // eslint-disable-next-line no-irregular-whitespace
+            .replace(/　/g, ' ')
+            .replace(/〜/g, '~');
         let delay = parseInt(args.DELAY, 10);
         delay = isNaN(delay) ? 120 : delay; // Use default delay if NaN.
         const resultPromise = this._peripheral.displayText(text, delay, util);

@@ -165,7 +165,7 @@ class WebSerial {
                     controller.enqueue({ch: ch, data: {type: type, value: value}});
                 } else {
                     // Error occurred
-                    log.debug(this.chunks); // debug
+                    // log.debug(this.chunks); // debug
                     this.chunks.shift(); // Remove current SFD
                     return;
                 }
@@ -200,25 +200,20 @@ class WebSerial {
      * Then emit the connection state by the runtime.
      * @return {Promise} - a Promise which will resolve when the serial-port was disconnected.
      */
-    disconnect () {
-        if (this.state !== 'open') return Promise.resolve();
+    async disconnect () {
+        if (this.state !== 'open') return;
         this.state = 'closing';
         this.stopReceiving();
-        return this.reader.cancel()
-            .then(() => this.readableStreamClosed.catch(() => { /* Ignore the error */ }))
-            .then(() => {
-                this.writer.close();
-                this.writer.releaseLock();
-                return this.write.closed;
-            })
-            .then(() => {
-                this.port.close();
-                this.state = 'close';
-                this.reader = null;
-                this.writer = null;
-                this.port = null;
-                this._runtime.emit(this._runtime.constructor.PERIPHERAL_DISCONNECTED);
-            });
+        await this.reader.cancel();
+        await this.readableStreamClosed.catch(() => { /* Ignore the error */ });
+        this.writer.close();
+        await this.writer.closed;
+        await this.port.close();
+        this.state = 'close';
+        this.reader = null;
+        this.writer = null;
+        this.port = null;
+        this._runtime.emit(this._runtime.constructor.PERIPHERAL_DISCONNECTED);
     }
 
     /**
@@ -339,7 +334,7 @@ class WebSerial {
                             check(count);
                         }, checkInterval);
                     };
-                    check(20);
+                    check(50);
                 });
         });
     }
@@ -460,7 +455,7 @@ class WebSerial {
      */
     // eslint-disable-next-line no-unused-vars
     write (serviceId, characteristicId, message, encoding = null, withResponse = null) {
-        withResponse = true; // "response" is always required for noise tolerance on serial-port.
+        withResponse = false; // true for noise tolerance on serial-port.
         const value = (encoding === 'base64') ? base64ToUint8Array(message) : message;
         const ch = SERIAL_CH_ID[characteristicId];
         if (this.chValues[ch]) {
