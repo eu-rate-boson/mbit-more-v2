@@ -1048,7 +1048,7 @@ class MbitMore {
     }
 
     /**
-     * Start to scan Bluetooth LE devices to find micro:bit with MicroBit More service.
+     * Start to scan Bluetooth LE devices to find micro:bit with Boson service.
      */
     scanBLE () {
         const connectorClass = BLE;
@@ -1567,7 +1567,7 @@ class MbitMoreBlocks {
     static get EXTENSION_NAME () {
         return formatMessage({
             id: 'mbitMore.name',
-            default: 'MicroBit More',
+            default: 'Boson', 
             description: 'name of the extension'
         });
     }
@@ -1604,7 +1604,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.tiltUp',
                     default: 'titl up',
-                    description: 'label for tilt up gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt up gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.TILT_UP
             },
@@ -1612,7 +1612,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.tiltDown',
                     default: 'titl down',
-                    description: 'label for tilt down gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt down gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.TILT_DOWN
             },
@@ -1620,7 +1620,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.tiltLeft',
                     default: 'titl left',
-                    description: 'label for tilt left gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt left gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.TILT_LEFT
             },
@@ -1628,7 +1628,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.tiltRight',
                     default: 'titl right',
-                    description: 'label for tilt right gesture in gesture picker for microbit more extension'
+                    description: 'label for tilt right gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.TILT_RIGHT
             },
@@ -1636,7 +1636,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.faceUp',
                     default: 'face up',
-                    description: 'label for face up gesture in gesture picker for microbit more extension'
+                    description: 'label for face up gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.FACE_UP
             },
@@ -1644,7 +1644,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.faceDown',
                     default: 'face down',
-                    description: 'label for face down gesture in gesture picker for microbit more extension'
+                    description: 'label for face down gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.FACE_DOWN
             },
@@ -1652,7 +1652,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.freefall',
                     default: 'freefall',
-                    description: 'label for freefall gesture in gesture picker for microbit more extension'
+                    description: 'label for freefall gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.FREEFALL
             },
@@ -1660,7 +1660,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.g3',
                     default: '3G',
-                    description: 'label for 3G gesture in gesture picker for microbit more extension'
+                    description: 'label for 3G gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.G3
             },
@@ -1668,7 +1668,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.g6',
                     default: '6G',
-                    description: 'label for 6G gesture in gesture picker for microbit more extension'
+                    description: 'label for 6G gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.G6
             },
@@ -1676,7 +1676,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.g8',
                     default: '8G',
-                    description: 'label for 3G gesture in gesture picker for microbit more extension'
+                    description: 'label for 3G gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.G8
             },
@@ -1684,7 +1684,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.gesturesMenu.shake',
                     default: 'shake',
-                    description: 'label for shaken gesture in gesture picker for microbit more extension'
+                    description: 'label for shaken gesture in gesture picker for Boson extension'
                 }),
                 value: MbitMoreGestureName.SHAKE
             }
@@ -1702,7 +1702,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.buttonIDMenu.a',
                     default: 'A',
-                    description: 'label for "A" element in button picker for Microbit More extension'
+                    description: 'label for "A" element in button picker for Boson extension'
                 }),
                 value: MbitMoreButtonName.A
             },
@@ -1710,7 +1710,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.buttonIDMenu.b',
                     default: 'B',
-                    description: 'label for "B" element in button picker for Microbit More extension'
+                    description: 'label for "B" element in button picker for Boson extension'
                 }),
                 value: MbitMoreButtonName.B
             }
@@ -1783,7 +1783,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.touchIDMenu.logo',
                     default: 'LOGO',
-                    description: 'label for "LOGO" element in touch button picker for Microbit More extension'
+                    description: 'label for "LOGO" element in touch button picker for Boson extension'
                 }),
                 value: MbitMoreButtonName.LOGO
             },
@@ -1886,7 +1886,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.digitalValueMenu.Low',
                     default: 'Low',
-                    description: 'label for low value in digital output menu for microbit more extension'
+                    description: 'label for low value in digital output menu for Boson extension'
                 }),
                 value: 'false'
             },
@@ -1894,7 +1894,7 @@ class MbitMoreBlocks {
                 text: formatMessage({
                     id: 'mbitMore.digitalValueMenu.High',
                     default: 'High',
-                    description: 'label for high value in digital output menu for microbit more extension'
+                    description: 'label for high value in digital output menu for Boson extension'
                 }),
                 value: 'true'
             }
@@ -2379,8 +2379,7 @@ class MbitMoreBlocks {
                     arguments: {
                         AXIS: {
                             type: ArgumentType.STRING,
-                            menu: 'axis',
-                            defaultValue: AxisSymbol.Absolute
+                            menu: 'axis'
                         }
                     }
                 },
@@ -2396,11 +2395,9 @@ class MbitMoreBlocks {
                         AXIS: {
                             type: ArgumentType.STRING,
                             menu: 'axis',
-                            defaultValue: AxisSymbol.X
                         }
                     }
                 },
-                '---',
                 {
                     opcode: 'getAnalogValue',
                     text: formatMessage({
@@ -2412,11 +2409,11 @@ class MbitMoreBlocks {
                     arguments: {
                         PIN: {
                             type: ArgumentType.STRING,
-                            menu: 'analogInPins',
-                            defaultValue: '0'
+                            menu: 'analogInPins'
                         }
                     }
                 },
+                '---',
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
@@ -2664,6 +2661,23 @@ class MbitMoreBlocks {
                         DATA: {
                             type: ArgumentType.STRING,
                             defaultValue: 'data'
+                        }
+                    }
+                },
+                '---',
+                {
+                    opcode: 'redirectImplementation',
+                    text: formatMessage({
+                        id:'mbitMore.redirectImplementation',
+                        default: 'To use [IMPLEMENTATION] click here',
+                        description: 'To use the NeoPixel led strip click here'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                        IMPLEMENTATION: {
+                            type: ArgumentType.STRING,
+                            menu: 'implementationsMenu',
+                            defaultValue: 'neopixel'
                         }
                     }
                 }
@@ -3328,6 +3342,16 @@ class MbitMoreBlocks {
     whenConnectionChanged (args) {
         const state = (args.STATE === 'connected');
         return (state === this._peripheral.isConnected());
+    }
+
+    /**
+    * Redirect to implementations.
+    * @param {object} args - the block's arguments.
+    * @return {string} string.
+    */
+    redirectImplementation(args) {
+        window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
+        return "NeoPixel with MicroBit";
     }
 }
 
