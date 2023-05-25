@@ -3,7 +3,7 @@ import BlockType from '../../extension-support/block-type';
 import Cast from '../../util/cast';
 import log from '../../util/log';
 
-import blockIcon from './block-icon.svg';
+import blockIcon from './block-icon.png';
 import translations from './translations.json';
 
 import BLE from './ble';
@@ -1567,7 +1567,7 @@ class MbitMoreBlocks {
     static get EXTENSION_NAME () {
         return formatMessage({
             id: 'mbitMore.name',
-            default: 'Boson',
+            default: 'MicroBit More',
             description: 'name of the extension'
         });
     }
@@ -2107,22 +2107,6 @@ class MbitMoreBlocks {
     }
 
     /**
-     * @return {array} - Menu items for Implementatuions menu.
-     */
-    get IMPLEMENTATIONS_MENU () {
-        return [
-            {
-                text: formatMessage({
-                    id: 'mbitMore.implementationsMenu.neopixel',
-                    default: 'NeoPixel LEDs',
-                    description: 'label for NeoPixel LEDs'
-                }),
-                value: 'neopixel'
-            }
-        ];
-    }
-
-    /**
      * Construct a set of MicroBit blocks.
      * @param {Runtime} runtime - the Scratch 3.0 runtime.
      */
@@ -2433,7 +2417,6 @@ class MbitMoreBlocks {
                         }
                     }
                 },
-                '---',
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
@@ -2574,7 +2557,7 @@ class MbitMoreBlocks {
                     opcode: 'listenPinEventType',
                     text: formatMessage({
                         id: 'mbitMore.listenPinEventType',
-                        default: 'catch event [EVENT_TYPE] on [PIN]',
+                        default: 'listen [EVENT_TYPE] event on [PIN]',
                         description: 'listen the event on the pin'
                     }),
                     blockType: BlockType.COMMAND,
@@ -2683,23 +2666,6 @@ class MbitMoreBlocks {
                             defaultValue: 'data'
                         }
                     }
-                },
-                '---',
-                {
-                    opcode: 'redirectImplementation',
-                    text: formatMessage({
-                        id:'mbitMore.redirectImplementation',
-                        default: 'To use [IMPLEMENTATION] click here',
-                        description: 'To use the NeoPixel led strip click here'
-                    }),
-                    blockType: BlockType.REPORTER,
-                    arguments: {
-                        IMPLEMENTATION: {
-                            type: ArgumentType.STRING,
-                            menu: 'implementationsMenu',
-                            defaultValue: 'neopixel'
-                        }
-                    }
                 }
             ],
             menus: {
@@ -2758,10 +2724,6 @@ class MbitMoreBlocks {
                 connectionStateMenu: {
                     acceptReporters: false,
                     items: this.CONNECTION_STATE_MENU
-                },
-                implementationsMenu: {
-                    acceptReporters: false,
-                    items: this.IMPLEMENTATIONS_MENU
                 }
             },
             translationMap: translations
@@ -3366,17 +3328,6 @@ class MbitMoreBlocks {
     whenConnectionChanged (args) {
         const state = (args.STATE === 'connected');
         return (state === this._peripheral.isConnected());
-    }
-    
-    /**
-     * Redirect to implementations.
-     * @param {object} args - the block's arguments.
-     * @return {string} string.
-     */
-    redirectImplementation (args)
-    {
-         window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
-         return "NeoPixel with MicroBit";
     }
 }
 
