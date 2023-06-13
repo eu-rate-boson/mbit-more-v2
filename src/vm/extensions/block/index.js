@@ -2435,8 +2435,8 @@ class MbitMoreBlocks {
                     opcode: 'readDigitalLevel',
                     text: formatMessage({
                       id: 'mbitMore.readDigitalLevel', 
-                      default: 'digital value of pin [PIN]',
-                      description: 'digital input value of the pin TESTING'
+                      default: 'digital value of pin [PIN] TESTING',
+                      description: 'digital input value of the pin'
                     }),
                     blockType: BlockType.REPORTER,
                     arguments: {
