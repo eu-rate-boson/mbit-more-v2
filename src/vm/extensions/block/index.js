@@ -1330,12 +1330,11 @@ class MbitMore {
      * @return {boolean} - whether the pin is high or not.
      */
     isPinAfterThreshold(pin, threshold) {
-      if (threshold<0) {threshold = 0;}
-      else if (threshold>100) {threshold = 100;}
-      var level = this.readAnalogIn(pin);
-
-      return level >= threshold;
-    }
+        if (threshold<0) {threshold = 0;}
+        else if (threshold>100) {threshold = 100;}
+  
+        return this.getAnalogValue(pin) >= threshold;
+      }
 
     /**
      * Return whether the pin value is high.
@@ -2427,6 +2426,21 @@ class MbitMoreBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'readDigitalLevel',
+                    text: formatMessage({
+                      id: 'mbitMore.readDigitalLevel', 
+                      default: 'digital value of pin [PIN]',
+                      description: 'digital input value of the pin'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                      PIN: {
+                        type: ArgumentType.STRING,
+                        menu: 'gpio'
+                      }
+                    }
+                  },
                 '---',
                 {
                     opcode: 'setPullMode',
@@ -2469,7 +2483,7 @@ class MbitMoreBlocks {
                     opcode: 'isPinAfterThreshold',
                     text: formatMessage({
                         id: 'mbitMore.isPinAfterThreshold',
-                        default: '[PIN] pin is higher than [THRESHOLD] (0-100)?',
+                        default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)?',
                         description: 'is the selected pin higher than the value?'
                     }),
                     blockType: BlockType.BOOLEAN,
@@ -3077,7 +3091,7 @@ class MbitMoreBlocks {
      * @param {number} args.PIN - pin ID.
      * @return {number} - digital input value of the pin.
      */
-    getDigitalValue (args) {
+    readDigitalLevel (args) {
         return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10));
     }
 

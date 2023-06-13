@@ -5255,9 +5255,8 @@ var MbitMore = /*#__PURE__*/function () {
       
       if (threshold<0) {threshold = 0;}
       else if (threshold>100) {threshold = 100;}
-      var level = this.readAnalogIn(pin);
 
-      return level >= threshold;
+      return this.getAnalogValue(pin) >= threshold;
     }
     /**
      * Return whether the pin value is high.
@@ -6291,6 +6290,21 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               menu: 'analogInPins'
             }
           }
+        },
+        {
+          opcode: 'readDigitalLevel',
+          text: formatMessage({
+            id: 'mbitMore.readDigitalLevel', 
+            default: 'digital value of pin [PIN]',
+            description: 'digital input value of the pin'
+          }),
+          blockType: blockType.REPORTER,
+          arguments: {
+            PIN: {
+              type: argumentType.STRING,
+              menu: 'gpio'
+            }
+          }
         }, '---',  {
           opcode: 'setPullMode',
           text: formatMessage({
@@ -6330,7 +6344,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           opcode: 'isPinAfterThreshold',
           text: formatMessage({
             id: 'mbitMore.isPinAfterThreshold',
-            default: '[PIN] pin is higher than [THRESHOLD] (0-100)?',
+            default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)?',
             description: 'is the selected pin higher than the value?'
           }),
           blockType: blockType.BOOLEAN,
@@ -7012,8 +7026,8 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "getDigitalValue",
-    value: function getDigitalValue(args) {
+    key: "readDigitalLevel",
+    value: function readDigitalLevel(args) {
       return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10));
     }
     /**
