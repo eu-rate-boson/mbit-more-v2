@@ -38,7 +38,7 @@ var entry = {
 
   extensionId: 'microbitMore',
   extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
-  collaborator: 'Yengawa Lab',
+  collaborator: 'Scuola di Robotica',
   iconURL: img$4,
   insetIconURL: img$3,
 
@@ -5245,6 +5245,23 @@ var MbitMore = /*#__PURE__*/function () {
     /**
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
+     * @param {number} threshold - the analog value threshold to surpass.
+     * @return {boolean} - whether the pin is high or not.
+     */
+
+  }, {
+    key: "isPinHighAnalog",
+    value: function isPinHighAnalog(pin, threshold) {
+      
+      if (threshold<0) var level = 0;
+      else if (threshold>100) var level = 100;
+      else var level = this.readAnalogIn(pin);
+
+      return level >= threshold;
+    }
+    /**
+     * Return whether the pin value is high.
+     * @param {number} pin - the pin to check.
      * @return {boolean} - whether the pin is high or not.
      */
 
@@ -6307,6 +6324,26 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
+            }
+          }
+        },
+        {
+          opcode: 'isPinHighAnalog',
+          text: formatMessage({
+            id: 'mbitMore.isPinHighAnalog',
+            default: '[PIN] pin is higher than [THRESHOLD] (0-100)?',
+            description: 'is the selected pin higher than the value?'
+          }),
+          blockType: blockType.BOOLEAN,
+          arguments: {
+            PIN: {
+              type: argumentType.STRING,
+              menu: 'gpio',
+              defaultValue: '0'
+            },
+            THRESHOLD: {
+              type: argumentType.NUMBER,
+              defaultValue: 50
             }
           }
         }, '---', {
