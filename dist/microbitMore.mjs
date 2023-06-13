@@ -5257,7 +5257,12 @@ var MbitMore = /*#__PURE__*/function () {
       if (threshold<0) {threshold = 0;}
       else if (threshold>100) {threshold = 100;}
 
-      return this._peripheral.readAnalogIn(pin, util) >= threshold;
+      var resultPromise = this._peripheral.readAnalogIn(pin, util);
+
+      if (!resultPromise) return;
+      return resultPromise.then(function (level) {
+        return (Math.round(level * 100 * 10 / 1024) / 10) >= threshold;
+      });
     }
     /**
      * Return whether the pin value is high.
@@ -6297,7 +6302,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           text: formatMessage({
             id: 'mbitMore.readDigitalLevel', 
             default: 'digital value of pin [PIN]',
-            description: 'digital input value of the pin IN_TESTING'
+            description: 'digital input value of the pin TESTING'
           }),
           blockType: blockType.REPORTER,
           arguments: {
@@ -6345,7 +6350,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
           opcode: 'isPinAfterThreshold',
           text: formatMessage({
             id: 'mbitMore.isPinAfterThreshold',
-            default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)? IN_TESTING',
+            default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)? TESTING',
             description: 'is the selected pin higher than the value?'
           }),
           blockType: blockType.BOOLEAN,

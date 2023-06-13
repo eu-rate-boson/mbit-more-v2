@@ -1334,7 +1334,11 @@ class MbitMore {
         if (threshold<0) {threshold = 0;}
         else if (threshold>100) {threshold = 100;}
   
-        return this._peripheral.readAnalogIn(pin, util) >= threshold;
+        var resultPromise = this._peripheral.readAnalogIn(pin, util);
+
+        if (!resultPromise) return;
+
+        return resultPromise.then((Math.round(level * 100 * 10 / 1024) / 10) >= threshold);
       }
 
     /**
