@@ -6346,7 +6346,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: '0'
             }
           }
-        }, {
+        },/* {
           opcode: 'isPinAfterThreshold',
           text: formatMessage({
             id: 'mbitMore.isPinAfterThreshold',
@@ -6365,7 +6365,7 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: 50
             }
           }
-        }, '---', {
+        }*/, '---', {
           opcode: 'setDigitalOut',
           text: formatMessage({
             id: 'mbitMore.setDigitalOut',

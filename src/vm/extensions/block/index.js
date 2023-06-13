@@ -2484,6 +2484,7 @@ class MbitMoreBlocks {
                         }
                     }
                 },
+                /*
                 {
                     opcode: 'isPinAfterThreshold',
                     text: formatMessage({
@@ -2503,7 +2504,8 @@ class MbitMoreBlocks {
                         defaultValue: 50
                         }
                     }
-                },
+                } */
+                ,
                 '---',
                 {
                     opcode: 'setDigitalOut',
