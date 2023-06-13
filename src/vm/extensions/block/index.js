@@ -1327,31 +1327,37 @@ class MbitMore {
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
      * @param {number} threshold - the analog value threshold to surpass.
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {boolean} - whether the pin is high or not.
      */
-    isPinAfterThreshold(pin, threshold) {
-        if (threshold<0) {threshold = 0;}
-        else if (threshold>100) {threshold = 100;}
-  
-        return this.getAnalogValue(pin) >= threshold;
+    isPinAfterThreshold(pin, threshold, util) {
+        
+      if (threshold<0) {threshold = 0;}
+      else if (threshold>100) {threshold = 100;}
+
+      return this.readAnalogIn(pin, util) >= threshold;
       }
 
     /**
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
+     * @param {BlockUtility} util - utility object provided from the runtime
      * @return {boolean} - whether the pin is high or not.
      */
-    isPinHigh (pin) {
-        const level = this.readDigitalLevel(pin);
+    isPinHigh (pin, util) {
+        const level = this.readDigitalLevel(pin, util);
         return level === 1;
     }
 
     /**
      * Read digital input from the pin.
      * @param {number} pin - the pin to read.
+     * @param {BlockUtility} util - utility object provided from the runtime
      * @return {number} - digital input value of the pin [0|1].
      */
-    readDigitalLevel (pin) {
+    readDigitalLevel (pin, util) {
+        
+        this.setPullMode(pin, MbitMorePullModeID[NONE] , util);
         if (!this.isConnected()) {
             return 0;
         }
@@ -3008,10 +3014,11 @@ class MbitMoreBlocks {
      * Test the selected pin is high as digital.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
+     * @param {BlockUtility} util - utility object provided from the runtime
      * @return {boolean} - true if the pin is high.
      */
-    isPinHigh (args) {
-        return this._peripheral.isPinHigh(parseInt(args.PIN, 10));
+    isPinHigh (args, util) {
+        return this._peripheral.isPinHigh(parseInt(args.PIN, 10), util);
     }
 
     /**
@@ -3019,11 +3026,12 @@ class MbitMoreBlocks {
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
      * @param {number} args.threshold - threshold.
+     * @param {BlockUtility} util - utility object provided from the runtime
      * @return {boolean} - true if the pin is high.
      */
 
-    isPinAfterThreshold(args) {
-      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold);
+    isPinAfterThreshold(args, util) {
+      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold, util);
     }
 
     /**
@@ -3089,10 +3097,11 @@ class MbitMoreBlocks {
      * Return digital value of the pin.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {number} - digital input value of the pin.
      */
-    readDigitalLevel (args) {
-        return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10));
+    readDigitalLevel (args, util) {
+        return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10), util);
     }
 
     /**
