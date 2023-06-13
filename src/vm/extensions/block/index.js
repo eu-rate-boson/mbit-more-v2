@@ -1327,13 +1327,14 @@ class MbitMore {
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
      * @param {number} threshold - the analog value threshold to surpass.
+     * @param {object} util - utility object provided by the runtime.
      * @return {boolean} - whether the pin is high or not.
      */
-    isPinAfterThreshold(pin, threshold) {
+    isPinAfterThreshold(pin, threshold, util) {
         if (threshold<0) {threshold = 0;}
         else if (threshold>100) {threshold = 100;}
   
-        return this.getAnalogValue(pin) >= threshold;
+        return this.getAnalogValue(pin, util) >= threshold;
       }
 
     /**
@@ -3019,11 +3020,12 @@ class MbitMoreBlocks {
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
      * @param {number} args.threshold - threshold.
+     * @param {object} util - utility object provided by the runtime.
      * @return {boolean} - true if the pin is high.
      */
 
-    isPinAfterThreshold(args) {
-      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold);
+    isPinAfterThreshold(args, util) {
+      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold, util);
     }
 
     /**

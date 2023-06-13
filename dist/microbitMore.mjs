@@ -5246,17 +5246,18 @@ var MbitMore = /*#__PURE__*/function () {
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
      * @param {number} threshold - the analog value threshold to surpass.
+     * @param {object} util - utility object provided by the runtime.
      * @return {boolean} - whether the pin is high or not.
      */
 
   }, {
     key: "isPinAfterThreshold",
-    value: function isPinAfterThreshold(pin, threshold) {
+    value: function isPinAfterThreshold(pin, threshold, util) {
       
       if (threshold<0) {threshold = 0;}
       else if (threshold>100) {threshold = 100;}
 
-      return this.getAnalogValue(pin) >= threshold;
+      return this.getAnalogValue(pin, util) >= threshold;
     }
     /**
      * Return whether the pin value is high.
@@ -6920,13 +6921,14 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
      * @param {number} args.threshold - threshold.
+     * @param {object} util - utility object provided by the runtime.
      * @return {boolean} - true if the pin is high.
      */
 
   }, {
     key: "isPinAfterThreshold",
-    value: function isPinAfterThreshold(args) {
-      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold);
+    value: function isPinAfterThreshold(args, util) {
+      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold, util);
     }
     /**
      * Test the selected pin is high as digital.
