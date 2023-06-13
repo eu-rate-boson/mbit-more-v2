@@ -5257,7 +5257,7 @@ var MbitMore = /*#__PURE__*/function () {
       if (threshold<0) {threshold = 0;}
       else if (threshold>100) {threshold = 100;}
 
-      return this.getAnalogValue(pin, util) >= threshold;
+      return this._peripheral.readAnalogIn(pin, util) >= threshold;
     }
     /**
      * Return whether the pin value is high.
