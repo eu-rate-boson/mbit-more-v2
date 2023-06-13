@@ -1,18 +1,18 @@
 {
   "de": {
-    "mbitMore.entry.name": "MicroBit More",
+    "mbitMore.entry.name": "Boson",
     "mbitMore.entry.description": "Nutze alle Funktionen des micro:bit."
   },
   "en": {
-    "mbitMore.entry.name": "MicroBit More",
+    "mbitMore.entry.name": "Boson",
     "mbitMore.entry.description": "Play with all functions of micro:bit."
   },
   "ja": {
-    "mbitMore.entry.name": "MicroBit More",
+    "mbitMore.entry.name": "Boson",
     "mbitMore.entry.description": "micro:bitのすべての機能で遊ぶ。"
   },
   "ja-Hira": {
-    "mbitMore.entry.name": "マイクロビット モア",
+    "mbitMore.entry.name": "Boson",
     "mbitMore.entry.description": "マイクロビットのすべてのきのうであそぶ。"
   }
 }

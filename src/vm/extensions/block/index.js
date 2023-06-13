@@ -1326,6 +1326,20 @@ class MbitMore {
     /**
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
+     * @param {number} threshold - the analog value threshold to surpass.
+     * @return {boolean} - whether the pin is high or not.
+     */
+    isPinAfterThreshold(pin, threshold) {
+      if (threshold<0) {threshold = 0;}
+      else if (threshold>100) {threshold = 100;}
+      var level = this.readAnalogIn(pin);
+
+      return level >= threshold;
+    }
+
+    /**
+     * Return whether the pin value is high.
+     * @param {number} pin - the pin to check.
      * @return {boolean} - whether the pin is high or not.
      */
     isPinHigh (pin) {
@@ -2451,6 +2465,26 @@ class MbitMoreBlocks {
                         }
                     }
                 },
+                {
+                    opcode: 'isPinAfterThreshold',
+                    text: formatMessage({
+                        id: 'mbitMore.isPinAfterThreshold',
+                        default: '[PIN] pin is higher than [THRESHOLD] (0-100)?',
+                        description: 'is the selected pin higher than the value?'
+                    }),
+                    blockType: BlockType.BOOLEAN,
+                    arguments: {
+                        PIN: {
+                        type: ArgumentType.STRING,
+                        menu: 'gpio',
+                        defaultValue: '0'
+                        },
+                        THRESHOLD: {
+                        type: ArgumentType.NUMBER,
+                        defaultValue: 50
+                        }
+                    }
+                },
                 '---',
                 {
                     opcode: 'setDigitalOut',
@@ -2964,6 +2998,18 @@ class MbitMoreBlocks {
      */
     isPinHigh (args) {
         return this._peripheral.isPinHigh(parseInt(args.PIN, 10));
+    }
+
+    /**
+     * Test the selected pin is higher than analog value.
+     * @param {object} args - the block's arguments.
+     * @param {number} args.PIN - pin ID.
+     * @param {number} args.threshold - threshold.
+     * @return {boolean} - true if the pin is high.
+     */
+
+    isPinAfterThreshold(args) {
+      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold);
     }
 
     /**

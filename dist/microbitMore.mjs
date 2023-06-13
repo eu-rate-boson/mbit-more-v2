@@ -18,7 +18,7 @@ var translations$1 = {
 	en: en,
 	ja: ja$1,
 	"ja-Hira": {
-	"mbitMore.entry.name": "マイクロビット モア",
+	"mbitMore.entry.name": "Boson",
 	"mbitMore.entry.description": "マイクロビットのすべてのきのうであそぶ。"
 }
 };
@@ -5250,12 +5250,12 @@ var MbitMore = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "isPinHighAnalog",
-    value: function isPinHighAnalog(pin, threshold) {
+    key: "isPinAfterThreshold",
+    value: function isPinAfterThreshold(pin, threshold) {
       
-      if (threshold<0) var level = 0;
-      else if (threshold>100) var level = 100;
-      else var level = this.readAnalogIn(pin);
+      if (threshold<0) {threshold = 0;}
+      else if (threshold>100) {threshold = 100;}
+      var level = this.readAnalogIn(pin);
 
       return level >= threshold;
     }
@@ -6326,11 +6326,10 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
               defaultValue: '0'
             }
           }
-        },
-        {
-          opcode: 'isPinHighAnalog',
+        }, {
+          opcode: 'isPinAfterThreshold',
           text: formatMessage({
-            id: 'mbitMore.isPinHighAnalog',
+            id: 'mbitMore.isPinAfterThreshold',
             default: '[PIN] pin is higher than [THRESHOLD] (0-100)?',
             description: 'is the selected pin higher than the value?'
           }),
@@ -6911,9 +6910,9 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "isPinHighAnalog",
-    value: function isPinHighAnalog(args) {
-      return this._peripheral.isPinHighAnalog(parseInt(args.PIN, 10), args.threshold);
+    key: "isPinAfterThreshold",
+    value: function isPinAfterThreshold(args) {
+      return this._peripheral.isPinAfterThreshold(parseInt(args.PIN, 10), args.threshold);
     }
     /**
      * Test the selected pin is high as digital.
@@ -7395,23 +7394,24 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
       if (prevTimestamp === null) return true;
       return lastTimestamp !== prevTimestamp;
     }
-    /**
-     * Test whether a micro:bit connected.
-     * @param {object} args - the block's arguments.
-     * @property {string} args.STATE - the state of connection to check.
-     * @return {boolean} - true if the state is matched.
-     */
 
+    /**
+     * Redirect to implementations.
+     * @param {object} args - the block's arguments.
+     * @return {string} string.
+     */
   }, {
     key: "redirectImplementation ",
     value: function redirectImplementation(args) {
         window.open("https://makecode.microbit.org/79067-48667-65547-62218", "_blank");
         return "NeoPixel with MicroBit";
     }
+
     /**
-     * Redirect to implementations.
+     * Test whether a micro:bit connected.
      * @param {object} args - the block's arguments.
-     * @return {string} string.
+     * @property {string} args.STATE - the state of connection to check.
+     * @return {boolean} - true if the state is matched.
      */
   }, {
     key: "whenConnectionChanged",
