@@ -2432,7 +2432,7 @@ class MbitMoreBlocks {
                     text: formatMessage({
                       id: 'mbitMore.readDigitalLevel', 
                       default: 'digital value of pin [PIN]',
-                      description: 'digital input value of the pin'
+                      description: 'digital input value of the pin TESTING'
                     }),
                     blockType: BlockType.REPORTER,
                     arguments: {
@@ -2484,7 +2484,7 @@ class MbitMoreBlocks {
                     opcode: 'isPinAfterThreshold',
                     text: formatMessage({
                         id: 'mbitMore.isPinAfterThreshold',
-                        default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)?',
+                        default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)? TESTING',
                         description: 'is the selected pin higher than the value?'
                     }),
                     blockType: BlockType.BOOLEAN,
