@@ -1,7 +1,7 @@
 let formatMessage = messageData => messageData.defaultMessage;
 
 /**
- * MicroBit More extension
+ * Boson extension
  */
 
 import microbitMoreIconURL from './entry-icon.png';
@@ -15,20 +15,20 @@ const version = 'v2-0.2.5';
 const entry = {
     get name () {
         return `${formatMessage({
-            defaultMessage: 'MicroBit More',
+            defaultMessage: 'Boson',
             description: 'Name of this extension',
             id: 'mbitMore.entry.name'
         })} (${version})`;
     },
     extensionId: 'microbitMore',
     extensionURL: 'https://eu-rate-boson.github.io/dist/microbitMore.mjs',
-    collaborator: 'Yengawa Lab',
+    collaborator: 'Scuola di Robotica',
     iconURL: microbitMoreIconURL,
     insetIconURL: microbitMoreInsetIconURL,
     get description () {
         return formatMessage({
             defaultMessage: 'Play with all functions of micro:bit.',
-            description: "Description for the 'Microbit More' extension",
+            description: "Description for the 'Boson' extension",
             id: 'mbitMore.entry.description'
         });
     },
