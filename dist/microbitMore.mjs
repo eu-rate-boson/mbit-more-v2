@@ -6903,6 +6903,19 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
       return this._peripheral.displayPixels(matrix, util);
     }
     /**
+     * Test the selected pin is higher than analog value.
+     * @param {object} args - the block's arguments.
+     * @param {number} args.PIN - pin ID.
+     * @param {number} args.threshold - threshold.
+     * @return {boolean} - true if the pin is high.
+     */
+
+  }, {
+    key: "isPinHighAnalog",
+    value: function isPinHighAnalog(args) {
+      return this._peripheral.isPinHighAnalog(parseInt(args.PIN, 10), args.threshold);
+    }
+    /**
      * Test the selected pin is high as digital.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
