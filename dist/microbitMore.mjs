@@ -5277,18 +5277,22 @@ var MbitMore = /*#__PURE__*/function () {
 
       // TODO TEST setPullMode(parseInt(pin, 10), MbitMorePullModeID.NONE, util);
 
-      var level = this.readDigitalLevel(pin);
+      var level = this.readDigitalLevel(pin, util);
       return level === 1;
     }
     /**
      * Read digital input from the pin.
      * @param {number} pin - the pin to read.
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {number} - digital input value of the pin [0|1].
      */
 
   }, {
     key: "readDigitalLevel",
-    value: function readDigitalLevel(pin) {
+    value: function readDigitalLevel(pin, util) {
+
+      // TODO TEST setPullMode(parseInt(pin, 10), MbitMorePullModeID.NONE, util);
+
       if (!this.isConnected()) {
         return 0;
       }
@@ -7034,13 +7038,14 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      * Return digital value of the pin.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {number} - digital input value of the pin.
      */
 
   }, {
     key: "readDigitalLevel",
-    value: function readDigitalLevel(args) {
-      return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10));
+    value: function readDigitalLevel(args, util) {
+      return this._peripheral.readDigitalLevel(parseInt(args.PIN, 10), util);
     }
     /**
      * Send data with label.
