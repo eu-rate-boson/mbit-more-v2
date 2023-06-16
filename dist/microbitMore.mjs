@@ -5267,7 +5267,7 @@ var MbitMore = /*#__PURE__*/function () {
     /**
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
-     * @param {object} util - util from block
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {boolean} - whether the pin is high or not.
      */
 
@@ -6943,13 +6943,14 @@ var MbitMoreBlocks = /*#__PURE__*/function () {
      * Test the selected pin is high as digital.
      * @param {object} args - the block's arguments.
      * @param {number} args.PIN - pin ID.
+     * @param {BlockUtility} util - utility object provided by the runtime.
      * @return {boolean} - true if the pin is high.
      */
 
   }, {
     key: "isPinHigh",
-    value: function isPinHigh(args) {
-      return this._peripheral.isPinHigh(parseInt(args.PIN, 10));
+    value: function isPinHigh(args, util) {
+      return this._peripheral.isPinHigh(parseInt(args.PIN, 10), util);
     }
     /**
      * Get amount of light (0 - 255) on the LEDs.
