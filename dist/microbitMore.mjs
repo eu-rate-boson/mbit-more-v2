@@ -5267,12 +5267,16 @@ var MbitMore = /*#__PURE__*/function () {
     /**
      * Return whether the pin value is high.
      * @param {number} pin - the pin to check.
+     * @param {object} util - util from block
      * @return {boolean} - whether the pin is high or not.
      */
 
   }, {
     key: "isPinHigh",
-    value: function isPinHigh(pin) {
+    value: function isPinHigh(pin, util) {
+
+      // TODO TEST setPullMode(parseInt(pin, 10), MbitMorePullModeID.NONE, util);
+
       var level = this.readDigitalLevel(pin);
       return level === 1;
     }
