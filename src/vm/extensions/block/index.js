@@ -2885,9 +2885,9 @@ class MbitMoreBlocks {
     */
     startBlock (util) {
         for (let i = 0; i < this.gpio.length-1; i++) {
-            this._peripheral.setPullMode([this.gpio[i]], MbitMorePullModeName.NONE, util);
+            this._peripheral.setPullMode(i, MbitMorePullModeName.NONE, util);
         }
-        return this._peripheral.setPullMode([this.gpio[16]], MbitMorePullModeName.NONE, util);
+        return this._peripheral.setPullMode(16, MbitMorePullModeName.NONE, util);
     }
 
     /**
