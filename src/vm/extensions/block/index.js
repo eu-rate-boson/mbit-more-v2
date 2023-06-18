@@ -2165,9 +2165,9 @@ class MbitMoreBlocks {
          * @type {Object.<number, Object>} pin index to object with event and timestamp.
          */
         this.prevReceivedData = {};
-
+        
         this.gpio.forEach(pinIndex => {
-            this.setPullMode(pin, MbitMorePullModeName.NONE, this.BlockUtility);
+            this.setPullMode(pinIndex, MbitMorePullModeName.NONE, BlockUtility);
         });
     }
 
