@@ -648,6 +648,18 @@ class MbitMore {
     }
 
     /**
+     * Preset pull mode.
+     * @param {BlockUtility} util - utility object provided from the runtime
+     * @return {?Promise} a Promise that resolves when command sending done or undefined if this process was yield.
+     */
+    startBlock(util) {
+        for (let i = 0; i < this.gpio.length-1; i++) {
+            let x = this._peripheral.setPullMode(i, MbitMorePullModeName.NONE, util);
+        }
+        return this._peripheral.setPullMode(16, MbitMorePullModeName.NONE, util);
+    }
+
+    /**
      * Set pin to digital output mode on the level.
      * @param {number} pinIndex - Index of pin.
      * @param {boolean} level - Value in digital (true = High)
@@ -2885,10 +2897,7 @@ class MbitMoreBlocks {
      * @return {promise | undefined} - true 
     */
     startBlock (util) {
-        for (let i = 0; i < this.gpio.length-1; i++) {
-            this._peripheral.setPullMode(i, MbitMorePullModeName.NONE, util);
-        }
-        return this._peripheral.setPullMode(16, MbitMorePullModeName.NONE, util);
+        return this._peripheral.startBlock(util);
     }
 
     /**
