@@ -2165,10 +2165,6 @@ class MbitMoreBlocks {
          * @type {Object.<number, Object>} pin index to object with event and timestamp.
          */
         this.prevReceivedData = {};
-        
-        this.gpio.forEach(pinIndex => {
-            this.setPullMode(pinIndex, MbitMorePullModeName.NONE, BlockUtility);
-        });
     }
 
     /**
@@ -2183,6 +2179,15 @@ class MbitMoreBlocks {
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
+                {
+                    opcode: 'startBlock',
+                    text: formatMessage({
+                        id: 'mbitMore.startBlock',
+                        default: 'Start block',
+                        description: 'when the selected touch pin on the micro:bit is touched'
+                    }),
+                    blockType: BlockType.REPORTER
+                },
                 {
                     opcode: 'whenConnectionChanged',
                     text: formatMessage({
@@ -2871,6 +2876,18 @@ class MbitMoreBlocks {
         const configPromise = this._peripheral.configTouchPin(MbitMoreButtonPinIndex[buttonName], util);
         if (!configPromise) return; // This thread was yielded.
         return configPromise.then(() => this.whenButtonEvent(args));
+    }
+
+    /**
+     * Start set pull mode none
+     * @param {object} util - utility object provided by the runtime.
+     * @return {boolean|Promise<boolean>|undefined} - true 
+    */
+    startBlock (util) {
+        this.gpio.forEach(pinIndex => {
+            this.setPullMode(pinIndex, MbitMorePullModeName.NONE, util);
+        });
+        return true;
     }
 
     /**
