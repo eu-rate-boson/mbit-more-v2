@@ -2195,7 +2195,7 @@ class MbitMoreBlocks {
                     opcode: 'startBlock',
                     text: formatMessage({
                         id: 'mbitMore.startBlock',
-                        default: 'Start block',
+                        default: 'Start block TESTING',
                         description: 'Preset pullmode'
                     }),
                     blockType: BlockType.COMMAND
