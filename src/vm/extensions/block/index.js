@@ -2451,7 +2451,8 @@ class MbitMoreBlocks {
                     arguments: {
                       PIN: {
                         type: ArgumentType.STRING,
-                        menu: 'gpio'
+                        menu: 'gpio',
+                        defaultValue: '0'
                       }
                     }
                   },
