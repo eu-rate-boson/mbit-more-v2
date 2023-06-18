@@ -2191,7 +2191,7 @@ class MbitMoreBlocks {
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
-                {
+                /*{
                     opcode: 'startBlock',
                     text: formatMessage({
                         id: 'mbitMore.startBlock',
@@ -2199,7 +2199,7 @@ class MbitMoreBlocks {
                         description: 'Preset pullmode'
                     }),
                     blockType: BlockType.COMMAND
-                },
+                },*/
                 {
                     opcode: 'whenConnectionChanged',
                     text: formatMessage({
