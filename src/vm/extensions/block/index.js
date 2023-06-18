@@ -2184,9 +2184,9 @@ class MbitMoreBlocks {
                     text: formatMessage({
                         id: 'mbitMore.startBlock',
                         default: 'Start block',
-                        description: 'when the selected touch pin on the micro:bit is touched'
+                        description: 'Preset pullmode'
                     }),
-                    blockType: BlockType.REPORTER
+                    blockType: BlockType.COMMAND
                 },
                 {
                     opcode: 'whenConnectionChanged',
@@ -2880,14 +2880,14 @@ class MbitMoreBlocks {
 
     /**
      * Start set pull mode none
-     * @param {object} util - utility object provided by the runtime.
-     * @return {boolean|Promise<boolean>|undefined} - true 
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {promise | undefined} - true 
     */
     startBlock (util) {
-        this.gpio.forEach(pinIndex => {
-            this.setPullMode(pinIndex, MbitMorePullModeName.NONE, util);
-        });
-        return true;
+        for (let i = 0; i < this.gpio.length-1; i++) {
+            this._peripheral.setPullMode([this.gpio[i]], MbitMorePullModeName.NONE, util);
+        }
+        return this._peripheral.setPullMode([this.gpio[16]], MbitMorePullModeName.NONE, util);
     }
 
     /**
