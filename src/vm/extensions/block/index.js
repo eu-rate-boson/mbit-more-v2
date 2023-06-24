@@ -2207,15 +2207,6 @@ class MbitMoreBlocks {
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
-                /*{
-                    opcode: 'startBlock',
-                    text: formatMessage({
-                        id: 'mbitMore.startBlock',
-                        default: 'Start block TESTING',
-                        description: 'Preset pullmode'
-                    }),
-                    blockType: BlockType.COMMAND
-                },*/
                 {
                     opcode: 'startBlock',
                     text: formatMessage({
@@ -2224,6 +2215,15 @@ class MbitMoreBlocks {
                         description: 'Start setup'
                     }),
                     blockType: BlockType.HAT
+                },
+                {
+                    opcode: 'startBlock',
+                    text: formatMessage({
+                        id: 'mbitMore.startBlock',
+                        default: 'Start Micro Bit',
+                        description: 'Start setup'
+                    }),
+                    blockType: BlockType.COMMAND
                 },
                 {
                     opcode: 'whenConnectionChanged',
@@ -2477,23 +2477,9 @@ class MbitMoreBlocks {
                         }
                     }
                 },
-                {
-                    opcode: 'readDigitalLevel',
-                    text: formatMessage({
-                      id: 'mbitMore.readDigitalLevel', 
-                      default: 'digital value of pin [PIN] TESTING',
-                      description: 'digital input value of the pin'
-                    }),
-                    blockType: BlockType.REPORTER,
-                    arguments: {
-                      PIN: {
-                        type: ArgumentType.STRING,
-                        menu: 'gpio',
-                        defaultValue: '0'
-                      }
-                    }
-                  },
                 '---',
+                '---',
+                'Always use this block before the two below',
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
@@ -2515,6 +2501,23 @@ class MbitMoreBlocks {
                         }
                     }
                 },
+                'Set pin input mode to NONE before using a pin digital value',
+                {
+                    opcode: 'readDigitalLevel',
+                    text: formatMessage({
+                      id: 'mbitMore.readDigitalLevel', 
+                      default: 'digital value of pin [PIN] TESTING',
+                      description: 'digital input value of the pin'
+                    }),
+                    blockType: BlockType.REPORTER,
+                    arguments: {
+                      PIN: {
+                        type: ArgumentType.STRING,
+                        menu: 'gpio',
+                        defaultValue: '0'
+                        }
+                    }
+                },
                 {
                     opcode: 'isPinHigh',
                     text: formatMessage({
@@ -2531,28 +2534,7 @@ class MbitMoreBlocks {
                         }
                     }
                 },
-                /*
-                {
-                    opcode: 'isPinAfterThreshold',
-                    text: formatMessage({
-                        id: 'mbitMore.isPinAfterThreshold',
-                        default: '[PIN] pin analog is higher than [THRESHOLD] (0-100)? TESTING',
-                        description: 'is the selected pin higher than the value?'
-                    }),
-                    blockType: BlockType.BOOLEAN,
-                    arguments: {
-                        PIN: {
-                        type: ArgumentType.STRING,
-                        menu: 'gpio',
-                        defaultValue: '0'
-                        },
-                        THRESHOLD: {
-                        type: ArgumentType.NUMBER,
-                        defaultValue: 50
-                        }
-                    }
-                } */
-                ,
+                '---',
                 '---',
                 {
                     opcode: 'setDigitalOut',
@@ -3479,10 +3461,10 @@ class MbitMoreBlocks {
      * @return {boolean} - true if the state is matched.
      */
     startBlock (args, util) {
-        for (let i = 0; i<17 ; i++) {
-            if (i>-1 && i<17) {
-                this.setPullMode(i, MbitMorePullModeID.NONE, util);
-            }
+        let i = 0;
+        while (i<17) { 
+            this._peripheral.setPullMode(i, MbitMorePullModeID.NONE, util); 
+            i=i+1;
         }
         return true;
     }
