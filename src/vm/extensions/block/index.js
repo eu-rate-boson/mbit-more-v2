@@ -2137,6 +2137,22 @@ class MbitMoreBlocks {
     }
 
     /**
+     * @return {array} - Menu items for connection state.
+     */
+    get IMPLEMENTATIONS_MENU () {
+        return [
+            {
+                text: formatMessage({
+                    id: 'mbitMore.implementationsMenu.neopixel',
+                    default: 'NeoPixel LEDs',
+                    description: 'label for NeoPixel LEDs'
+                }),
+                value: 'neopixel'
+            }
+        ];
+    }
+
+    /**
      * Construct a set of MicroBit blocks.
      * @param {Runtime} runtime - the Scratch 3.0 runtime.
      */
@@ -2200,6 +2216,15 @@ class MbitMoreBlocks {
                     }),
                     blockType: BlockType.COMMAND
                 },*/
+                {
+                    opcode: 'startBlock',
+                    text: formatMessage({
+                        id: 'mbitMore.startBlock',
+                        default: 'Start Micro Bit',
+                        description: 'Start setup'
+                    }),
+                    blockType: BlockType.HAT
+                },
                 {
                     opcode: 'whenConnectionChanged',
                     text: formatMessage({
@@ -2815,6 +2840,10 @@ class MbitMoreBlocks {
                 connectionStateMenu: {
                     acceptReporters: false,
                     items: this.CONNECTION_STATE_MENU
+                },
+                implementationsMenu: {
+                    acceptReporters: false,
+                    items: this.IMPLEMENTATIONS_MENU
                 }
             },
             translationMap: translations
@@ -3441,6 +3470,21 @@ class MbitMoreBlocks {
     whenConnectionChanged (args) {
         const state = (args.STATE === 'connected');
         return (state === this._peripheral.isConnected());
+    }
+
+    /**
+     * Start setup.
+     * @param {object} args - the block's arguments.
+     * @param {BlockUtility} util - utility object provided by the runtime.
+     * @return {boolean} - true if the state is matched.
+     */
+    startBlock (args, util) {
+        for (let i = 0; i<17 ; i++) {
+            if (i>-1 && i<17) {
+                this.setPullMode(i, MbitMorePullModeID.NONE, util);
+            }
+        }
+        return true;
     }
 
     /**
