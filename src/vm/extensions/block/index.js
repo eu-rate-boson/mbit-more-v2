@@ -2207,6 +2207,7 @@ class MbitMoreBlocks {
             blockIconURI: blockIcon,
             showStatusButton: true,
             blocks: [
+                /*
                 {
                     opcode: 'startBlock',
                     text: formatMessage({
@@ -2216,9 +2217,6 @@ class MbitMoreBlocks {
                     }),
                     blockType: BlockType.HAT
                 },
-
-                /*
-
                 {
                     opcode: 'startBlock',
                     text: formatMessage({
@@ -2228,9 +2226,7 @@ class MbitMoreBlocks {
                     }),
                     blockType: BlockType.COMMAND
                 },
-
                 */
-
                 {
                     opcode: 'whenConnectionChanged',
                     text: formatMessage({
