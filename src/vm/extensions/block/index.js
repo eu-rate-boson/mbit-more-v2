@@ -2486,7 +2486,7 @@ class MbitMoreBlocks {
                     opcode: 'setPullMode',
                     text: formatMessage({
                         id: 'mbitMore.setPullMode',
-                        default: 'set pin [PIN] to input [MODE] (Use this block at the start of the project to set the values of pins you want to use to NONE)',
+                        default: 'set pin [PIN] to input [MODE] (Use this block at the start of the project to set the values of pins you want to use to input NONE)',
                         description: 'set a pin into the mode'
                     }),
                     blockType: BlockType.COMMAND,
@@ -2508,7 +2508,7 @@ class MbitMoreBlocks {
                     opcode: 'readDigitalLevel',
                     text: formatMessage({
                       id: 'mbitMore.readDigitalLevel', 
-                      default: 'digital value of pin [PIN] (Before using this block, set the pin to NONE)',
+                      default: 'digital value of pin [PIN] (Before using this block, set the pin to input NONE)',
                       description: 'digital input value of the pin'
                     }),
                     blockType: BlockType.REPORTER,
@@ -2524,7 +2524,7 @@ class MbitMoreBlocks {
                     opcode: 'isPinHigh',
                     text: formatMessage({
                         id: 'mbitMore.isPinHigh',
-                        default: '[PIN] pin is high? (Before using this block, set the pin to NONE)',
+                        default: '[PIN] pin is high? (Before using this block, set the pin to input NONE)',
                         description: 'is the selected pin high as digital?'
                     }),
                     blockType: BlockType.BOOLEAN,
