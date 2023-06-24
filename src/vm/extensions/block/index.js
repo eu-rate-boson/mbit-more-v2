@@ -2216,6 +2216,9 @@ class MbitMoreBlocks {
                     }),
                     blockType: BlockType.HAT
                 },
+
+                /*
+
                 {
                     opcode: 'startBlock',
                     text: formatMessage({
@@ -2225,6 +2228,9 @@ class MbitMoreBlocks {
                     }),
                     blockType: BlockType.COMMAND
                 },
+
+                */
+
                 {
                     opcode: 'whenConnectionChanged',
                     text: formatMessage({
@@ -2479,12 +2485,12 @@ class MbitMoreBlocks {
                 },
                 '---',
                 '---',
-                'Always use this block before the two below',
+                //'Always use this block before the two below',
                 {
                     opcode: 'setPullMode',
                     text: formatMessage({
                         id: 'mbitMore.setPullMode',
-                        default: 'set pin [PIN] to input [MODE]',
+                        default: 'set pin [PIN] to input [MODE] \n[Use this block at the start of the project to set the pins values you use to NONE]',
                         description: 'set a pin into the mode'
                     }),
                     blockType: BlockType.COMMAND,
@@ -2501,12 +2507,12 @@ class MbitMoreBlocks {
                         }
                     }
                 },
-                'Set pin input mode to NONE before using a pin digital value',
+                //'Set pin input mode to NONE before using a pin digital value',
                 {
                     opcode: 'readDigitalLevel',
                     text: formatMessage({
                       id: 'mbitMore.readDigitalLevel', 
-                      default: 'digital value of pin [PIN] TESTING',
+                      default: 'digital value of pin [PIN] \n[Before using this block set the pin to NONE]',
                       description: 'digital input value of the pin'
                     }),
                     blockType: BlockType.REPORTER,
@@ -2522,7 +2528,7 @@ class MbitMoreBlocks {
                     opcode: 'isPinHigh',
                     text: formatMessage({
                         id: 'mbitMore.isPinHigh',
-                        default: '[PIN] pin is high?',
+                        default: '[PIN] pin is high? \n[Before using this block set the pin to NONE]',
                         description: 'is the selected pin high as digital?'
                     }),
                     blockType: BlockType.BOOLEAN,
