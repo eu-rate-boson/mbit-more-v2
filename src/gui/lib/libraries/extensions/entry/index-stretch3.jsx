@@ -1,7 +1,7 @@
 import formatMessage from 'format-message';
 
 /**
- * MicroBit More extension
+ * Boson extension
  */
 
 import microbitMoreIconURL from './entry-icon.png';
