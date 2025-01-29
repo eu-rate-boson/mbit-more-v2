@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../scratch-gui"
+		},
+		{
+			"path": "../scratch-vm"
+		},
+		{
+			"path": "../eu-rate-boson.github.io"
+		},
+		{
+			"path": "../microbit-more-doc"
+		}
+	],
+	"settings": {
+		"eslint.format.enable": true,
+		"files.watcherExclude": {
+			"**/build/**": true,
+			"**/node_modules/**": false,
+			"**/translations/**": true
+		},
+		"liveServer.settings.multiRootWorkspaceName": "mbit-more-v2"
+	}
+}
