@@ -1,0 +1,10 @@
+{
+  "it": {
+	"mbitMore.entry.name": "EuRate Boson",
+	"mbitMore.entry.description": "Gioca con tutte le funzioni di micro:bit."
+},
+  "en": {
+    "mbitMore.entry.name": "EuRate Boson",
+    "mbitMore.entry.description": "Play with all functions of micro:bit."
+  }
+}
